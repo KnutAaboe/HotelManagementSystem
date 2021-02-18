@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eatcandy", "eatshitandgodie\eatshitandgodie.vcxproj", "{65C5245D-C60E-4121-A563-D7AA6F99F107}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListenYouNiceMan", "ListenYouLittleShit\ListenYouLittleShit.vcxproj", "{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop App", "Desktop App\Desktop App.csproj", "{C810FB57-EED0-474A-BC03-72CDE347F989}"
 EndProject
 Global
@@ -19,26 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Debug|x64.ActiveCfg = Debug|x64
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Debug|x64.Build.0 = Debug|x64
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Debug|x86.ActiveCfg = Debug|Win32
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Debug|x86.Build.0 = Debug|Win32
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Release|Any CPU.ActiveCfg = Release|Win32
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Release|x64.ActiveCfg = Release|x64
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Release|x64.Build.0 = Release|x64
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Release|x86.ActiveCfg = Release|Win32
-		{65C5245D-C60E-4121-A563-D7AA6F99F107}.Release|x86.Build.0 = Release|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Debug|x64.ActiveCfg = Debug|x64
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Debug|x64.Build.0 = Debug|x64
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Debug|x86.ActiveCfg = Debug|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Debug|x86.Build.0 = Debug|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Release|Any CPU.ActiveCfg = Release|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Release|x64.ActiveCfg = Release|x64
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Release|x64.Build.0 = Release|x64
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Release|x86.ActiveCfg = Release|Win32
-		{A7B2F466-FA5F-49AA-9691-BD2F64E4D247}.Release|x86.Build.0 = Release|Win32
 		{C810FB57-EED0-474A-BC03-72CDE347F989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C810FB57-EED0-474A-BC03-72CDE347F989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C810FB57-EED0-474A-BC03-72CDE347F989}.Debug|x64.ActiveCfg = Debug|Any CPU
