@@ -44,5 +44,24 @@ namespace Desktop_App
             roomList.DataContext = rooms.Local;
 
         }
+
+        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            roomList.DataContext = rooms.Local.Where(r => r.roomNr.ToString() == search.Text);
+        }
+
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            if(search.Text == "")
+            {
+                roomList.DataContext = this.rooms.Local;
+            }
+        }
+
+        private void buttonReserve_Click(object sender, RoutedEventArgs e)
+        {
+            new AddReservation(dx).ShowDialog();
+        }
     }
 }
