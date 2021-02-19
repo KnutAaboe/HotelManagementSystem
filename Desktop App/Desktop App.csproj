@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddReservation.xaml.cs">
+      <DependentUpon>AddReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="booking.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
     <Compile Include="roomService.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Page Include="AddReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

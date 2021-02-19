@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cc2c713d5ac641d2a78c09ea874bb663" Name="Diagram1">
-        <EntityTypeShape EntityType="HotelModel.booking" Width="1.5" PointX="8.375" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelModel.cleanRequest" Width="1.5" PointX="5.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelModel.maintainenceRequest" Width="1.5" PointX="2.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.booking" Width="1.5" PointX="6.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.cleanRequest" Width="1.5" PointX="5.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.maintainenceRequest" Width="1.5" PointX="2.875" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="HotelModel.room" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HotelModel.roomService" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="HotelModel.FK__booking__roomNr__66603565" ManuallyRouted="false" />
