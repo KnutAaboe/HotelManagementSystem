@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="roomNr" />
+            <PropertyRef Name="startTime" />
+          </Key>
+          <Property Name="roomNr" Type="int" Nullable="false" />
+          <Property Name="startTime" Type="date" Nullable="false" />
+          <Property Name="endTime" Type="date" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="roomNr" />
+          </Key>
+          <Property Name="roomNr" Type="int" Nullable="false" />
+          <Property Name="noBeds" Type="int" />
+          <Property Name="roomSize" Type="int" />
+        </EntityType>
+        <Association Name="FK__booking__roomNr__66603565">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="roomNr" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__booking__roomNr__66603565" Association="Self.FK__booking__roomNr__66603565">
+            <End Role="room" EntitySet="room" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="roomNr" />
+            <PropertyRef Name="startTime" />
+          </Key>
+          <Property Name="roomNr" Type="Int32" Nullable="false" />
+          <Property Name="startTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endTime" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="room" Relationship="Self.FK__booking__roomNr__66603565" FromRole="booking" ToRole="room" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="roomNr" />
+          </Key>
+          <Property Name="roomNr" Type="Int32" Nullable="false" />
+          <Property Name="noBeds" Type="Int32" />
+          <Property Name="roomSize" Type="Int32" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__roomNr__66603565" FromRole="room" ToRole="booking" />
+        </EntityType>
+        <Association Name="FK__booking__roomNr__66603565">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="roomNr" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="roomNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Hotel_ManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="rooms" EntityType="Self.room" />
+          <AssociationSet Name="FK__booking__roomNr__66603565" Association="Self.FK__booking__roomNr__66603565">
+            <End Role="room" EntitySet="rooms" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Hotel_ManagerEntities">
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="Model.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="roomNr" ColumnName="roomNr" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="Model.room">
+              <MappingFragment StoreEntitySet="room">
+                <ScalarProperty Name="roomNr" ColumnName="roomNr" />
+                <ScalarProperty Name="noBeds" ColumnName="noBeds" />
+                <ScalarProperty Name="roomSize" ColumnName="roomSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
