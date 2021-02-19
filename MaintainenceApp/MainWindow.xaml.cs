@@ -24,5 +24,20 @@ namespace MaintainenceApp
         {
             InitializeComponent();
         }
+
+        private void getCleaner(object sender, RoutedEventArgs e)
+        {
+            new Cleaner();
+        }
+
+        private void getMaintain(object sender, RoutedEventArgs e)
+        {
+            new Maintain();
+        }
+
+        private void getService(object sender, RoutedEventArgs e)
+        {
+            new service();
+        }
     }
 }
