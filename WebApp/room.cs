@@ -18,6 +18,9 @@ namespace WebApp
         public room()
         {
             this.bookings = new HashSet<booking>();
+            this.cleanRequests = new HashSet<cleanRequest>();
+            this.maintainenceRequests = new HashSet<maintainenceRequest>();
+            this.roomServices = new HashSet<roomService>();
         }
     
         public int roomNr { get; set; }
@@ -26,5 +29,11 @@ namespace WebApp
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cleanRequest> cleanRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<maintainenceRequest> maintainenceRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<roomService> roomServices { get; set; }
     }
 }
