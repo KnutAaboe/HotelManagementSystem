@@ -1,4 +1,4 @@
-﻿@model WebApp.booking
+﻿@model WebApp.guest
 
 @{
     ViewBag.Title = "Delete";
@@ -8,39 +8,47 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>booking</h4>
+    <h4>guest</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.startTime)
+            @Html.DisplayNameFor(model => model.firstname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.startTime)
+            @Html.DisplayFor(model => model.firstname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.endTime)
+            @Html.DisplayNameFor(model => model.lastname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.endTime)
+            @Html.DisplayFor(model => model.lastname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.guest.firstname)
+            @Html.DisplayNameFor(model => model.dob)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.guest.firstname)
+            @Html.DisplayFor(model => model.dob)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.room.roomType)
+            @Html.DisplayNameFor(model => model.username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.room.roomType)
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
         </dd>
 
     </dl>

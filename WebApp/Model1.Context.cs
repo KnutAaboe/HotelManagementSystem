@@ -13,10 +13,10 @@ namespace WebApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Hotel_ManagerEntities2 : DbContext
+    public partial class Hotel_ManagerEntities : DbContext
     {
-        public Hotel_ManagerEntities2()
-            : base("name=Hotel_ManagerEntities2")
+        public Hotel_ManagerEntities()
+            : base("name=Hotel_ManagerEntities")
         {
         }
     
@@ -27,6 +27,7 @@ namespace WebApp
     
         public virtual DbSet<booking> bookings { get; set; }
         public virtual DbSet<cleanRequest> cleanRequests { get; set; }
+        public virtual DbSet<guest> guests { get; set; }
         public virtual DbSet<maintainenceRequest> maintainenceRequests { get; set; }
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<roomService> roomServices { get; set; }

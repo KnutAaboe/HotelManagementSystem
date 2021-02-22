@@ -12,28 +12,40 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.guest.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startTime)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.endTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.room.roomNr)
+            @Html.DisplayNameFor(model => model.room.roomType)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.endTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.room.roomNr)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.guest.firstname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.startTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.endTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.room.roomType)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
 }
 
 </table>

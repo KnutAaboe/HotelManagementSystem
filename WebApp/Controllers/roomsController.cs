@@ -14,7 +14,7 @@ namespace WebApp.Controllers
 {
     public class roomsController : ApiController
     {
-        private Hotel_ManagerEntities2 db = new Hotel_ManagerEntities2();
+        private Hotel_ManagerEntities db = new Hotel_ManagerEntities();
 
         // GET: api/rooms
         public IQueryable<room> Getrooms()
