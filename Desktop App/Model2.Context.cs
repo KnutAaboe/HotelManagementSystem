@@ -13,10 +13,10 @@ namespace Desktop_App
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Hotel_ManagerEntities : DbContext
+    public partial class HotelEntities : DbContext
     {
-        public Hotel_ManagerEntities()
-            : base("name=Hotel_ManagerEntities")
+        public HotelEntities()
+            : base("name=HotelEntities")
         {
         }
     
@@ -27,6 +27,7 @@ namespace Desktop_App
     
         public virtual DbSet<booking> bookings { get; set; }
         public virtual DbSet<cleanRequest> cleanRequests { get; set; }
+        public virtual DbSet<guest> guests { get; set; }
         public virtual DbSet<maintainenceRequest> maintainenceRequests { get; set; }
         public virtual DbSet<room> rooms { get; set; }
         public virtual DbSet<roomService> roomServices { get; set; }
