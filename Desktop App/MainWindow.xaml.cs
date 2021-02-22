@@ -21,7 +21,7 @@ namespace Desktop_App
     /// </summary>
     public partial class MainWindow : Window    {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
         private DbSet<room> rooms;
         private DbSet<booking> bookings;
