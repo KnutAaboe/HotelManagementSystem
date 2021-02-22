@@ -28,19 +28,10 @@ namespace MaintainenceApp
         private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> roomServices;
 
-        public Service()
+        public Service(Hotel_ManagerEntities x)
         {
-            InitializeComponent();
-
-            rooms = dx.rooms;
-            bookings = dx.bookings;
-            cleanRequests = dx.cleanRequests;
-            maintainenceRequests = dx.maintainenceRequests;
-            roomServices = dx.roomServices;
-
-            rooms.Load();
-
-            roomList.DataContext = rooms.Local;
+            dx =x;
+               
 
         }
     }

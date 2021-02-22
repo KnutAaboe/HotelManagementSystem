@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,27 @@ namespace MaintainenceApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+
+        private DbSet<room> rooms;
+        private DbSet<booking> bookings;
+        private DbSet<cleanRequest> cleanRequests;
+        private DbSet<maintainenceRequest> maintainenceRequests;
+        private DbSet<roomService> roomServices;
         public MainWindow()
         {
             InitializeComponent();
+
+            rooms = dx.room;
+            bookings = dx.booking;
+            cleanRequests = dx.cleanRequest;
+            maintainenceRequests = dx.maintainenceRequest;
+            roomServices = dx.roomService;
+
+            rooms.Load();
+
+            
         }
 
         private void getCleaner(object sender, RoutedEventArgs e)
@@ -37,7 +56,7 @@ namespace MaintainenceApp
 
         private void getService(object sender, RoutedEventArgs e)
         {
-            //new service();
+            new Service(dx).ShowDialog();
         }
     }
 }
