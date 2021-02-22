@@ -27,17 +27,17 @@ namespace MaintainenceApp
 
         private void getCleaner(object sender, RoutedEventArgs e)
         {
-            new Cleaner();
+            //new Cleaner();
         }
 
         private void getMaintain(object sender, RoutedEventArgs e)
         {
-            new Maintain();
+            //new Maintain();
         }
 
         private void getService(object sender, RoutedEventArgs e)
         {
-            new service();
+            //new service();
         }
     }
 }
