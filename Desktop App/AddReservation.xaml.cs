@@ -20,13 +20,13 @@ namespace Desktop_App
     /// </summary>
     public partial class AddReservation : Window
     {
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
         public AddReservation()
         {
             InitializeComponent();
         }
-        public AddReservation(Hotel_ManagerEntities x) : this()
+        public AddReservation(HotelEntities x) : this()
         {
             dx = x;
         }

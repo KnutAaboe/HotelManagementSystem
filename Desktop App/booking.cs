@@ -14,10 +14,13 @@ namespace Desktop_App
     
     public partial class booking
     {
+        public int ID { get; set; }
+        public string phoneNr { get; set; }
         public int roomNr { get; set; }
         public System.DateTime startTime { get; set; }
-        public Nullable<System.DateTime> endTime { get; set; }
+        public System.DateTime endTime { get; set; }
     
+        public virtual guest guest { get; set; }
         public virtual room room { get; set; }
     }
 }
