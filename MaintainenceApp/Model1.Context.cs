@@ -27,9 +27,9 @@ namespace MaintainenceApp
     
         public virtual DbSet<booking> booking { get; set; }
         public virtual DbSet<cleanRequest> cleanRequest { get; set; }
+        public virtual DbSet<guest> guest { get; set; }
         public virtual DbSet<maintainenceRequest> maintainenceRequest { get; set; }
         public virtual DbSet<room> room { get; set; }
         public virtual DbSet<roomService> roomService { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

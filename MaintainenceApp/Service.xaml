@@ -1,0 +1,26 @@
+﻿<Window x:Class="MaintainenceApp.Service"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaintainenceApp"
+        mc:Ignorable="d"
+        Title="Service" Height="450" Width="800">
+    <Grid>
+        <!--<Label Content="Status" FontSize="25" HorizontalAlignment="Left" Margin="230,10,0,0" VerticalAlignment="Top" Height="58" Width="172" RenderTransformOrigin="0.647,0.633"/>
+        <Label Content="RequestNumber"  FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="58" Width="202"/>-->
+        <ListView Name="roomList" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
+                        <GridViewColumn Width="100" Header="Beds" DisplayMemberBinding="{Binding Path=noBeds}" />
+                        <GridViewColumn Width="100" Header="Size" DisplayMemberBinding="{Binding Path=roomSize}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Window>

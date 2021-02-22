@@ -63,5 +63,10 @@ namespace Desktop_App
         {
             new AddReservation(dx).ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new Reservations(dx).ShowDialog();
+        }
     }
 }

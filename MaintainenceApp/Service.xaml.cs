@@ -13,15 +13,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace MaintainenceApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Service.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Service : Window
     {
-
         private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
 
         private DbSet<room> rooms;
@@ -29,34 +27,12 @@ namespace MaintainenceApp
         private DbSet<cleanRequest> cleanRequests;
         private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> roomServices;
-        public MainWindow()
+
+        public Service(Hotel_ManagerEntities x)
         {
-            InitializeComponent();
+            dx =x;
+               
 
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
-            maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
-
-            rooms.Load();
-
-            
-        }
-
-        private void getCleaner(object sender, RoutedEventArgs e)
-        {
-            //new Cleaner();
-        }
-
-        private void getMaintain(object sender, RoutedEventArgs e)
-        {
-            //new Maintain();
-        }
-
-        private void getService(object sender, RoutedEventArgs e)
-        {
-            new Service(dx).ShowDialog();
         }
     }
 }
