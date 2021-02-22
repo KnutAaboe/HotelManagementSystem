@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="Window2" Height="450" Width="800">
     <Grid>
-        
+        <ListView Name="roomMaintananceList" ItemsSource="{Binding}" Margin="0,38,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
+                        <GridViewColumn Width="100" Header="RequestTime" DisplayMemberBinding="{Binding Path=requestTime}" />
+                        <GridViewColumn Width="100" Header="RequestStatus" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                        <GridViewColumn Width="100" Header="Note" DisplayMemberBinding="{Binding Path=note}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+        <Button Name="buttonSearch" Content="Seach" HorizontalAlignment="Left" Margin="135,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
+        <Button Name="buttonNeedMaintanace" Content="Need maintanace" HorizontalAlignment="Left" Margin="285,13,0,0" VerticalAlignment="Top" Width="90" Click="buttonNeedMaintained_Click"/>
+        <Button Name="buttonAddMaintained" Content="Add maintained" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="buttonAddMaintained_Click"/>
     </Grid>
 </Window>
