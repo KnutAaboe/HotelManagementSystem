@@ -75,13 +75,14 @@ namespace Desktop_App
         {
             if (selectedRoom == null)
                 return;
-            new roomEditorWidnow(selectedRoom, dx).ShowDialog();
+            new Reservations(selectedRoom, dx).ShowDialog();
         }
 
         private void roomList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedRoom = (room)roomList.SelectedItem;
-            responsBox.Content = "room selected: " + selectedRoom.roomNr;
+            //responsBox.Content = "room selected: " + selectedRoom.roomNr;
+            editRoomBtn.Content = "Options for room: " + selectedRoom.roomNr;
         }
     }
 }
