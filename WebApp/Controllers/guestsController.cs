@@ -10,116 +10,107 @@ using WebApp;
 
 namespace WebApp.Controllers
 {
-    public class bookingsController : Controller
+    public class guestsController : Controller
     {
         private Hotel_ManagerEntities db = new Hotel_ManagerEntities();
 
-        // GET: bookings
+        // GET: guests
         public ActionResult Index()
         {
-            var bookings = db.bookings.Include(b => b.guest).Include(b => b.room);
-            return View(bookings.ToList());
+            return View(db.guests.ToList());
         }
 
-        // GET: bookings/Details/5
-        public ActionResult Details(int? id)
+        // GET: guests/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
-            if (booking == null)
+            guest guest = db.guests.Find(id);
+            if (guest == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(guest);
         }
 
-        // GET: bookings/Create
+        // GET: guests/Create
         public ActionResult Create()
         {
-            ViewBag.phoneNr = new SelectList(db.guests, "phoneNr", "firstname");
-            ViewBag.roomNr = new SelectList(db.rooms, "roomNr", "roomType");
             return View();
         }
 
-        // POST: bookings/Create
+        // POST: guests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,phoneNr,roomNr,startTime,endTime")] booking booking)
+        public ActionResult Create([Bind(Include = "firstname,lastname,phoneNr,dob,username,pass")] guest guest)
         {
             if (ModelState.IsValid)
             {
-                db.bookings.Add(booking);
+                db.guests.Add(guest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.phoneNr = new SelectList(db.guests, "phoneNr", "firstname", booking.phoneNr);
-            ViewBag.roomNr = new SelectList(db.rooms, "roomNr", "roomType", booking.roomNr);
-            return View(booking);
+            return View(guest);
         }
 
-        // GET: bookings/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: guests/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
-            if (booking == null)
+            guest guest = db.guests.Find(id);
+            if (guest == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.phoneNr = new SelectList(db.guests, "phoneNr", "firstname", booking.phoneNr);
-            ViewBag.roomNr = new SelectList(db.rooms, "roomNr", "roomType", booking.roomNr);
-            return View(booking);
+            return View(guest);
         }
 
-        // POST: bookings/Edit/5
+        // POST: guests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,phoneNr,roomNr,startTime,endTime")] booking booking)
+        public ActionResult Edit([Bind(Include = "firstname,lastname,phoneNr,dob,username,pass")] guest guest)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(booking).State = EntityState.Modified;
+                db.Entry(guest).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.phoneNr = new SelectList(db.guests, "phoneNr", "firstname", booking.phoneNr);
-            ViewBag.roomNr = new SelectList(db.rooms, "roomNr", "roomType", booking.roomNr);
-            return View(booking);
+            return View(guest);
         }
 
-        // GET: bookings/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: guests/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
-            if (booking == null)
+            guest guest = db.guests.Find(id);
+            if (guest == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(guest);
         }
 
-        // POST: bookings/Delete/5
+        // POST: guests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            booking booking = db.bookings.Find(id);
-            db.bookings.Remove(booking);
+            guest guest = db.guests.Find(id);
+            db.guests.Remove(guest);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
