@@ -23,6 +23,7 @@ namespace WebApp
             this.roomServices = new HashSet<roomService>();
         }
     
+        //int roomNr
         public int roomNr { get; set; }
         public Nullable<int> noBeds { get; set; }
         public Nullable<int> roomSize { get; set; }
