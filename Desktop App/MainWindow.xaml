@@ -14,6 +14,9 @@
                         <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
                         <GridViewColumn Width="100" Header="Beds" DisplayMemberBinding="{Binding Path=noBeds}" />
                         <GridViewColumn Width="100" Header="Size" DisplayMemberBinding="{Binding Path=roomSize}" />
+                        <GridViewColumn Width="100" Header="roomType" DisplayMemberBinding="{Binding Path=roomType}" />
+                        <GridViewColumn Width="100" Header="roomState" DisplayMemberBinding="{Binding Path=roomState}" />
+                        <GridViewColumn Width="100" Header="roomQuality" DisplayMemberBinding="{Binding Path=roomQuality}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
