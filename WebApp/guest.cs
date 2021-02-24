@@ -24,16 +24,12 @@ namespace WebApp
         public int id { get; set; }
         public string firstname { get; set; }
 
-     
         public string lastname { get; set; }
 
-      
         public string phoneNr { get; set; }
 
-
-        //Nullable<System.DateTime>
-        public DateTime dob { get; set; }
-
+        //DateTime
+        public Nullable<System.DateTime> dob { get; set; }
       
         public string username { get; set; }
 
