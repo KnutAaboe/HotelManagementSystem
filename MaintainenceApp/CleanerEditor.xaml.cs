@@ -15,11 +15,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MaintainenceApp
+
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CleanerEditor.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CleanerEditor : Window
     {
 
         private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
@@ -29,34 +30,41 @@ namespace MaintainenceApp
         private DbSet<cleanRequest> cleanRequests;
         private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> roomServices;
-        public MainWindow()
+
+        public CleanerEditor()
         {
             InitializeComponent();
 
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
-            maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
+            //rooms = dx.room;
+            //bookings = dx.booking;
+            //cleanRequests = dx.cleanRequest;
+            //maintainenceRequests = dx.maintainenceRequest;
+            //roomServices = dx.roomService;
 
-            rooms.Load();
+            //rooms.Load();
+
+            //roomList.DataContext = rooms.Local;
+        }
+
+        public CleanerEditor(Hotel_ManagerEntities x) : this() 
+        {
+            dx = x;
+        }
+
+        private void taskPlacement_Click(object sender, RoutedEventArgs e)
+        {
+            Cleaner c = new Cleaner();
+
+            //Call e function which checks if submittet room matches one in roomsList, and then check 
+
+            c.roomList.
 
             
         }
 
-        private void getCleaner(object sender, RoutedEventArgs e)
+        private void taskNot_Click(object sender, RoutedEventArgs e)
         {
-            new Cleaner().ShowDialog();
-        }
 
-        private void getMaintain(object sender, RoutedEventArgs e)
-        {
-            //new Maintain();
-        }
-
-        private void getService(object sender, RoutedEventArgs e)
-        {
-            new Service(dx).ShowDialog();
         }
     }
 }

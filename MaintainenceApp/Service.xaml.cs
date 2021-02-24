@@ -22,15 +22,22 @@ namespace MaintainenceApp
     {
         private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
+        //private DbSet<room> rooms;
+        //private DbSet<booking> bookings;
+        //private DbSet<cleanRequest> cleanRequests;
+        //private DbSet<maintainenceRequest> maintainenceRequests;
+        //private DbSet<roomService> roomServices;
 
-        public Service(Hotel_ManagerEntities x)
+        public Service()
         {
+            InitializeComponent();
+        }
+
+        public Service(Hotel_ManagerEntities x) : this()
+        {
+
             dx =x;
+
                
 
         }
