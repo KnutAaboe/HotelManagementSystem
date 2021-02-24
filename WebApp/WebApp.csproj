@@ -148,10 +148,14 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\bookingsController.cs" />
+    <Compile Include="Controllers\guestsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\roomsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="guest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="maintainenceRequest.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -178,6 +182,28 @@
     <Compile Include="roomService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoomStates\BookingState.cs" />
+    <Compile Include="RoomStates\SettledBooking.cs" />
+    <Compile Include="RoomStates\UnsettledBooking.cs" />
+    <Compile Include="Rooms\States\AvailableState.cs" />
+    <Compile Include="Rooms\States\MaintenanceState.cs" />
+    <Compile Include="Rooms\States\NotCleanedState.cs" />
+    <Compile Include="Rooms\States\OccupiedState.cs" />
+    <Compile Include="Rooms\States\RoomState.cs" />
+    <Compile Include="Rooms\RoomTypes\DoubleRoom.cs" />
+    <Compile Include="Rooms\RoomTypes\SingleRoom.cs" />
+    <Content Include="Views\Guests\Create.cshtml" />
+    <Content Include="Views\Guests\Delete.cshtml" />
+    <Content Include="Views\Guests\Details.cshtml" />
+    <Content Include="Views\Guests\Edit.cshtml" />
+    <Content Include="Views\Guests\Index.cshtml" />
+    <Content Include="Views\bookings\Create.cshtml" />
+    <Content Include="Views\bookings\Delete.cshtml" />
+    <Content Include="Views\bookings\Details.cshtml" />
+    <Content Include="Views\bookings\Edit.cshtml" />
+    <Content Include="Views\bookings\Index.cshtml" />
+    <None Include="Views\Login\BadLoginView.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -232,16 +258,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\bookings\Create.cshtml" />
-    <Content Include="Views\bookings\Delete.cshtml" />
-    <Content Include="Views\bookings\Details.cshtml" />
-    <Content Include="Views\bookings\Edit.cshtml" />
-    <Content Include="Views\bookings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Guests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

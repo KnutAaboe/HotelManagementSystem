@@ -23,9 +23,13 @@ namespace WebApp
             this.roomServices = new HashSet<roomService>();
         }
     
+        //int roomNr
         public int roomNr { get; set; }
         public Nullable<int> noBeds { get; set; }
         public Nullable<int> roomSize { get; set; }
+        public string roomType { get; set; }
+        public string roomState { get; set; }
+        public string roomQuality { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }

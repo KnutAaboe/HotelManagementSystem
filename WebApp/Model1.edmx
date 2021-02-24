@@ -7,12 +7,13 @@
       <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="booking">
           <Key>
-            <PropertyRef Name="roomNr" />
-            <PropertyRef Name="startTime" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="phoneNr" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="roomNr" Type="int" Nullable="false" />
           <Property Name="startTime" Type="date" Nullable="false" />
-          <Property Name="endTime" Type="date" />
+          <Property Name="endTime" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="cleanRequest">
           <Key>
@@ -23,6 +24,17 @@
           <Property Name="requestTime" Type="date" Nullable="false" />
           <Property Name="reqStatus" Type="varchar" MaxLength="50" />
           <Property Name="note" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="phoneNr" />
+          </Key>
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="phoneNr" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="dob" Type="date" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="maintainenceRequest">
           <Key>
@@ -41,6 +53,9 @@
           <Property Name="roomNr" Type="int" Nullable="false" />
           <Property Name="noBeds" Type="int" />
           <Property Name="roomSize" Type="int" />
+          <Property Name="roomType" Type="varchar" MaxLength="20" />
+          <Property Name="roomState" Type="varchar" MaxLength="30" />
+          <Property Name="roomQuality" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="roomService">
           <Key>
@@ -52,7 +67,19 @@
           <Property Name="reqStatus" Type="varchar" MaxLength="50" />
           <Property Name="note" Type="varchar" MaxLength="250" />
         </EntityType>
-        <Association Name="FK__booking__roomNr__66603565">
+        <Association Name="FK__booking__phoneNr__7B5B524B">
+          <End Role="guest" Type="Self.guest" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="phoneNr" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="phoneNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__roomNr__7C4F7684">
           <End Role="room" Type="Self.room" Multiplicity="1" />
           <End Role="booking" Type="Self.booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,10 +130,15 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cleanRequest" EntityType="Self.cleanRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="guest" EntityType="Self.guest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="maintainenceRequest" EntityType="Self.maintainenceRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roomService" EntityType="Self.roomService" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__booking__roomNr__66603565" Association="Self.FK__booking__roomNr__66603565">
+          <AssociationSet Name="FK__booking__phoneNr__7B5B524B" Association="Self.FK__booking__phoneNr__7B5B524B">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__roomNr__7C4F7684" Association="Self.FK__booking__roomNr__7C4F7684">
             <End Role="room" EntitySet="room" />
             <End Role="booking" EntitySet="booking" />
           </AssociationSet>
@@ -130,13 +162,15 @@
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="booking">
           <Key>
-            <PropertyRef Name="roomNr" />
-            <PropertyRef Name="startTime" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="phoneNr" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="roomNr" Type="Int32" Nullable="false" />
           <Property Name="startTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="endTime" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="room" Relationship="Self.FK__booking__roomNr__66603565" FromRole="booking" ToRole="room" />
+          <Property Name="endTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="guest" Relationship="Self.FK__booking__phoneNr__7B5B524B" FromRole="booking" ToRole="guest" />
+          <NavigationProperty Name="room" Relationship="Self.FK__booking__roomNr__7C4F7684" FromRole="booking" ToRole="room" />
         </EntityType>
         <EntityType Name="cleanRequest">
           <Key>
@@ -148,6 +182,18 @@
           <Property Name="reqStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="room" Relationship="Self.FK__cleanRequ__roomN__6EF57B66" FromRole="cleanRequest" ToRole="room" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="phoneNr" />
+          </Key>
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneNr" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__phoneNr__7B5B524B" FromRole="guest" ToRole="booking" />
         </EntityType>
         <EntityType Name="maintainenceRequest">
           <Key>
@@ -167,7 +213,10 @@
           <Property Name="roomNr" Type="Int32" Nullable="false" />
           <Property Name="noBeds" Type="Int32" />
           <Property Name="roomSize" Type="Int32" />
-          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__roomNr__66603565" FromRole="room" ToRole="booking" />
+          <Property Name="roomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="roomState" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="roomQuality" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__roomNr__7C4F7684" FromRole="room" ToRole="booking" />
           <NavigationProperty Name="cleanRequests" Relationship="Self.FK__cleanRequ__roomN__6EF57B66" FromRole="room" ToRole="cleanRequest" />
           <NavigationProperty Name="maintainenceRequests" Relationship="Self.FK__maintaine__roomN__6C190EBB" FromRole="room" ToRole="maintainenceRequest" />
           <NavigationProperty Name="roomServices" Relationship="Self.FK__roomServi__roomN__693CA210" FromRole="room" ToRole="roomService" />
@@ -183,7 +232,19 @@
           <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="room" Relationship="Self.FK__roomServi__roomN__693CA210" FromRole="roomService" ToRole="room" />
         </EntityType>
-        <Association Name="FK__booking__roomNr__66603565">
+        <Association Name="FK__booking__phoneNr__7B5B524B">
+          <End Role="guest" Type="Self.guest" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="phoneNr" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="phoneNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__roomNr__7C4F7684">
           <End Role="room" Type="Self.room" Multiplicity="1" />
           <End Role="booking" Type="Self.booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,13 +292,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Hotel_ManagerEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Hotel_ManagerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bookings" EntityType="Self.booking" />
           <EntitySet Name="cleanRequests" EntityType="Self.cleanRequest" />
+          <EntitySet Name="guests" EntityType="Self.guest" />
           <EntitySet Name="maintainenceRequests" EntityType="Self.maintainenceRequest" />
           <EntitySet Name="rooms" EntityType="Self.room" />
           <EntitySet Name="roomServices" EntityType="Self.roomService" />
-          <AssociationSet Name="FK__booking__roomNr__66603565" Association="Self.FK__booking__roomNr__66603565">
+          <AssociationSet Name="FK__booking__phoneNr__7B5B524B" Association="Self.FK__booking__phoneNr__7B5B524B">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__roomNr__7C4F7684" Association="Self.FK__booking__roomNr__7C4F7684">
             <End Role="room" EntitySet="rooms" />
             <End Role="booking" EntitySet="bookings" />
           </AssociationSet>
@@ -259,10 +325,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Hotel_ManagerEntities2">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Hotel_ManagerEntities">
           <EntitySetMapping Name="bookings">
             <EntityTypeMapping TypeName="Model.booking">
               <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="phoneNr" ColumnName="phoneNr" />
                 <ScalarProperty Name="roomNr" ColumnName="roomNr" />
                 <ScalarProperty Name="startTime" ColumnName="startTime" />
                 <ScalarProperty Name="endTime" ColumnName="endTime" />
@@ -276,6 +344,18 @@
                 <ScalarProperty Name="requestTime" ColumnName="requestTime" />
                 <ScalarProperty Name="reqStatus" ColumnName="reqStatus" />
                 <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guests">
+            <EntityTypeMapping TypeName="Model.guest">
+              <MappingFragment StoreEntitySet="guest">
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="phoneNr" ColumnName="phoneNr" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -295,6 +375,9 @@
                 <ScalarProperty Name="roomNr" ColumnName="roomNr" />
                 <ScalarProperty Name="noBeds" ColumnName="noBeds" />
                 <ScalarProperty Name="roomSize" ColumnName="roomSize" />
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="roomState" ColumnName="roomState" />
+                <ScalarProperty Name="roomQuality" ColumnName="roomQuality" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

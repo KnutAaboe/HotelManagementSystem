@@ -1,0 +1,22 @@
+﻿<Window x:Class="Desktop_App.editBooking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop_App"
+        mc:Ignorable="d"
+        Title="editBooking" Height="199.688" Width="800">
+    <Grid>
+        <Label Content="roomNr" HorizontalAlignment="Left" Margin="84,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="phoneNr" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="startDate" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="endDate" HorizontalAlignment="Left" Margin="579,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="roomNrBox" HorizontalAlignment="Left" Height="23" Margin="55,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="phoneNrBox" HorizontalAlignment="Left" Height="23" Margin="202,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <DatePicker Name="startDateBox" HorizontalAlignment="Left" Margin="375,41,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="endDateBox" HorizontalAlignment="Left" Margin="559,41,0,0" VerticalAlignment="Top"/>
+        <Button Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="465,94,0,0" VerticalAlignment="Top" Width="113" Height="46"/>
+        <Button Name="ok" Content="Ok" HorizontalAlignment="Left" Margin="632,94,0,0" VerticalAlignment="Top" Width="113" Height="46" Click="ok_Click"/>
+        <Label Name="responsBox" Content="" HorizontalAlignment="Left" Margin="67,94,0,0" VerticalAlignment="Top" Height="54" Width="238"/>
+    </Grid>
+</Window>

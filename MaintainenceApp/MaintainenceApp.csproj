@@ -194,5 +194,11 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Desktop App\Desktop App.csproj">
+      <Project>{c810fb57-eed0-474a-bc03-72cde347f989}</Project>
+      <Name>Desktop App</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

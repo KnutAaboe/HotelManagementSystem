@@ -14,10 +14,23 @@ namespace WebApp
     
     public partial class booking
     {
+        public int ID { get; set; }
+        public string phoneNr { get; set; }
         public int roomNr { get; set; }
-        public System.DateTime startTime { get; set; }
-        public Nullable<System.DateTime> endTime { get; set; }
+
+        //System.DateTime
+        public DateTime startTime { get; set; }
+
+        //System.DateTime
+        public DateTime endTime { get; set; }
     
+        public virtual guest guest { get; set; }
         public virtual room room { get; set; }
+
+
+        //Nylig lagt til
+        public int RoomId { get; set; }
+
+        public string GuestName { get; set; }
     }
 }

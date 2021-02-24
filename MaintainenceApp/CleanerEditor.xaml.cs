@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 
@@ -35,13 +36,13 @@ namespace MaintainenceApp
         {
             InitializeComponent();
 
-            //rooms = dx.room;
-            //bookings = dx.booking;
-            //cleanRequests = dx.cleanRequest;
-            //maintainenceRequests = dx.maintainenceRequest;
-            //roomServices = dx.roomService;
+            rooms = dx.room;
+            bookings = dx.booking;
+            cleanRequests = dx.cleanRequest;
+            maintainenceRequests = dx.maintainenceRequest;
+            roomServices = dx.roomService;
 
-            //rooms.Load();
+            rooms.Load();
 
             //roomList.DataContext = rooms.Local;
         }
@@ -55,15 +56,22 @@ namespace MaintainenceApp
         {
             Cleaner c = new Cleaner();
 
-            //Call e function which checks if submittet room matches one in roomsList, and then check 
 
-            c.roomList.
+
+            //Call e function which checks if submittet room matches one in roomsList
+
 
             
+
+
+
+
         }
 
         private void taskNot_Click(object sender, RoutedEventArgs e)
         {
+            //Call e function which checks if submittet room matches one in roomsList
+
 
         }
     }
