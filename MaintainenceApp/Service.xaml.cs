@@ -22,17 +22,26 @@ namespace MaintainenceApp
     {
         private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
+        //private DbSet<room> rooms;
+        //private DbSet<booking> bookings;
+        //private DbSet<cleanRequest> cleanRequests;
+        //private DbSet<maintainenceRequest> maintainenceRequests;
+        private DbSet<roomService> s;
+
 
         public Service(Hotel_ManagerEntities x)
         {
+            InitializeComponent();
             dx =x;
-               
+            s = dx.roomService;
+            s.Load();
+            serviceList.DataContext = s.Local;
 
+        }
+
+        private void ChangeStat(object sender, RoutedEventArgs e)
+        {
+            new ChangeStatus(dx).ShowDialog();
         }
     }
 }

@@ -9,18 +9,20 @@
     <Grid>
         <!--<Label Content="Status" FontSize="25" HorizontalAlignment="Left" Margin="230,10,0,0" VerticalAlignment="Top" Height="58" Width="172" RenderTransformOrigin="0.647,0.633"/>
         <Label Content="RequestNumber"  FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="58" Width="202"/>-->
-        <ListView Name="roomList" ItemsSource="{Binding}">
+        <ListView Name="serviceList" ItemsSource="{Binding}" Margin="0,38,0,0">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
-                        <GridViewColumn Width="100" Header="Beds" DisplayMemberBinding="{Binding Path=noBeds}" />
-                        <GridViewColumn Width="100" Header="Size" DisplayMemberBinding="{Binding Path=roomSize}" />
+                        <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                        <GridViewColumn Width="100" Header="Date" DisplayMemberBinding="{Binding Path=requestTime}" />
+                        <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=notes}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
 
+        <Button Name="buttonReserve" Content="Change Status" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="ChangeStat"/>
 
     </Grid>
 </Window>
