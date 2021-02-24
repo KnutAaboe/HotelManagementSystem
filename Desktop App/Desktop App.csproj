@@ -96,6 +96,9 @@
     <Compile Include="roomService.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="serviceWindow.xaml.cs">
+      <DependentUpon>serviceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="validator.cs" />
     <Page Include="AddReservation.xaml">
       <SubType>Designer</SubType>
@@ -118,6 +121,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Reservations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="serviceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

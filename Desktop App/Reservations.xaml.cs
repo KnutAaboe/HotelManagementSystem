@@ -34,8 +34,9 @@ namespace Desktop_App
             dx = x;
             loadRooms();
 
-            grid.Children.Remove(roomServiceBtn);
-            grid.Children.Remove(maintainenceBtn);
+            grid.Children.Remove(service);
+            grid.Children.Remove(maintainence);
+            grid.Children.Remove(clean);
             grid.Children.Remove(roomSelected);
         }
         public Reservations(room r, HotelEntities dx) : this()
@@ -116,14 +117,13 @@ namespace Desktop_App
             }
         }
 
-        private void roomServiceBtn_Click(object sender, RoutedEventArgs e)
+        private void ServiceBtn_Click(object sender, RoutedEventArgs e)
         {
-            // TODO add roomservice window
-        }
+            if(r != null)
+            {
+                new serviceWindow(dx, ((Button)sender).Name, r).ShowDialog();
+            }else roomSelected.Content = "r is null";
 
-        private void maintainenceBtn_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO add maintainence window
         }
     }
 }

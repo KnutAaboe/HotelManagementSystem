@@ -11,7 +11,7 @@
             <ColumnDefinition Width="49*"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBox Name="roomNrBox" HorizontalAlignment="Left" Height="23" Margin="29,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="phoneNr" HorizontalAlignment="Left" Height="23" Margin="192,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <DatePicker Name="startDate" HorizontalAlignment="Left" Margin="350,48,0,0" VerticalAlignment="Top" DisplayDate="2021-02-22" FirstDayOfWeek="Monday" Grid.ColumnSpan="2"/>
@@ -22,7 +22,6 @@
         <Label Name="responseBox" Content="" HorizontalAlignment="Left" Margin="88,75,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="room nr" HorizontalAlignment="Left" Margin="29,16,0,0" VerticalAlignment="Top"/>
         <Label Content="phone nr" HorizontalAlignment="Left" Margin="192,15,0,0" VerticalAlignment="Top"/>
-
-
+        <ComboBox Name="pickFromList" HorizontalAlignment="Left" Margin="150,79,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="pickFromList_SelectionChanged" Height="22" />
     </Grid>
 </Window>
