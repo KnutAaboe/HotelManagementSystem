@@ -20,23 +20,31 @@ namespace Desktop_App
     /// </summary>
     public partial class Reservations : Window
     {
-        private HotelEntities dx = new HotelEntities();
+        private HotelEntities dx;
         private static booking selected;
+        private room r;
+        private bool isSingleRoom = false;
 
         public Reservations()
         {
             InitializeComponent();
-
-
-            dx.bookings.Load();
-
-            reservationList.DataContext = dx.bookings.Local;
-
-            
         }
         public Reservations(HotelEntities x) : this()
         {
             dx = x;
+            loadRooms();
+
+            grid.Children.Remove(roomServiceBtn);
+            grid.Children.Remove(maintainenceBtn);
+            grid.Children.Remove(roomSelected);
+        }
+        public Reservations(room r, HotelEntities dx) : this()
+        {
+            this.r = r;
+            this.dx = dx;
+            isSingleRoom = true;
+            loadRooms();
+            roomSelected.Content = "You are now looking at reservations for room: " + this.r.roomNr;
         }
 
         private void reservationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,8 +92,38 @@ namespace Desktop_App
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            dx.bookings.Load();
-            reservationList.DataContext = dx.bookings.Local;
+            loadRooms();
+        }
+
+        private void loadRooms()
+        {
+            if (isSingleRoom && r != null)
+            {
+                dx.bookings.Load();
+                if (dx.bookings.Local.Where(b => b.roomNr == this.r.roomNr).Count() == 0)
+                {
+                    selectedBox.Content = "No elements to show. Add a reservation with this room number to change that.";
+                }
+                else
+                {
+                    reservationList.DataContext = dx.bookings.Local.Where(b => b.roomNr == this.r.roomNr);
+                }
+            }
+            else
+            {
+                dx.bookings.Load();
+                reservationList.DataContext = dx.bookings.Local;
+            }
+        }
+
+        private void roomServiceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO add roomservice window
+        }
+
+        private void maintainenceBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO add maintainence window
         }
     }
 }

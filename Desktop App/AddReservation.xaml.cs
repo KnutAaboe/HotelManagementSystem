@@ -20,7 +20,8 @@ namespace Desktop_App
     /// </summary>
     public partial class AddReservation : Window
     {
-        private HotelEntities dx = new HotelEntities();
+        private HotelEntities dx;
+        private room r;
 
         public AddReservation()
         {
@@ -75,5 +76,7 @@ namespace Desktop_App
                 responseBox.Content = "Error making reservation.";
             }
         }
+
+
     }
 }

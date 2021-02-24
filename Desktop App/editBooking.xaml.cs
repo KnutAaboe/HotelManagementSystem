@@ -74,6 +74,7 @@ namespace Desktop_App
                     dx.SaveChanges();
 
                     responsBox.Content = "Reservation altered.";
+                    this.Close();
 
                 }
                 catch

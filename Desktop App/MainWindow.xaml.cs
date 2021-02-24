@@ -29,6 +29,8 @@ namespace Desktop_App
         private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> roomServices;
 
+        private room selectedRoom;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,6 +69,20 @@ namespace Desktop_App
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new Reservations(dx).ShowDialog();
+        }
+
+        private void editRoomBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedRoom == null)
+                return;
+            new Reservations(selectedRoom, dx).ShowDialog();
+        }
+
+        private void roomList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedRoom = (room)roomList.SelectedItem;
+            //responsBox.Content = "room selected: " + selectedRoom.roomNr;
+            editRoomBtn.Content = "Options for room: " + selectedRoom.roomNr;
         }
     }
 }
