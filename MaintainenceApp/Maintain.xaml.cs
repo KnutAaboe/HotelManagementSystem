@@ -29,6 +29,8 @@ namespace MaintainenceApp
         private DbSet<cleanRequest> cleanRequests;
         private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> roomServices;
+        private maintainenceRequest selected;
+
         public Window2()
 
         {
@@ -40,7 +42,6 @@ namespace MaintainenceApp
             maintainenceRequests = dx.maintainenceRequest;
             roomServices = dx.roomService;
 
-            rooms.Load();
             maintainenceRequests.Load();
 
             roomMaintananceList.DataContext = maintainenceRequests.Local;
@@ -51,6 +52,7 @@ namespace MaintainenceApp
             roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == search.Text);
         }
 
+
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -60,15 +62,43 @@ namespace MaintainenceApp
             }
         }
 
+
         private void buttonNeedMaintanace_click(object sender, RoutedEventArgs e)
         {
             roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.reqStatus.ToString() == "Need maintanance");
         }
 
-        private void buttonMaintained_Click(object sender, RoutedEventArgs e)
+
+        private void maintananceList_Selector(object sender, SelectionChangedEventArgs e)
         {
-            roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == search.Text);
-            //Legg til en addMaintained funksjon
+            selected = ((maintainenceRequest)roomMaintananceList.SelectedItem);
+            messages.Content = "You have selected room " + selected.roomNr + ". The notes for this request is " + selected.note + ".";
+        }
+
+
+        private void buttonMaintainted_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)sender).Content == "Maintained")
+            {
+                if (selected != null)
+                {
+                    try
+                    {
+                        dx.maintainenceRequest.Find(selected);
+                        dx.maintainenceRequest.Remove(selected);
+                        dx.SaveChanges();
+                        selected = null;
+                        dx.maintainenceRequest.Load();
+                        roomMaintananceList.DataContext = dx.maintainenceRequest.Local;
+
+                        messages.Content = "Maintanance request deleted";
+                    }
+                    catch
+                    {
+                        messages.Content = "A problem while you where removing a maintanance request";
+                    }
+                }
+            }
         }
     }
 }

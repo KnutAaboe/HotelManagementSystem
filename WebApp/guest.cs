@@ -11,7 +11,6 @@ namespace WebApp
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class guest
     {
@@ -20,32 +19,26 @@ namespace WebApp
         {
             this.bookings = new HashSet<booking>();
         }
-
-        [Key]
-        public int UserID { get; set; }
-
-        [Required(ErrorMessage = "First name is required.")]
+    
+        //Nylig satt inn
+        public int id { get; set; }
         public string firstname { get; set; }
 
-        [Required(ErrorMessage = "Last name is required.")]
+     
         public string lastname { get; set; }
 
-        [Required(ErrorMessage = "Phone number is required.")]
+      
         public string phoneNr { get; set; }
 
-        [Required(ErrorMessage = "Birth date is required.")]
-        public Nullable<System.DateTime> dob { get; set; }
 
-        [Required(ErrorMessage = "Username is required.")]
+        //Nullable<System.DateTime>
+        public DateTime dob { get; set; }
+
+      
         public string username { get; set; }
 
-        [Required(ErrorMessage = "Password is required.")]
-        [DataType(DataType.Password)]
         public string pass { get; set; }
 
-        [Compare("pass", ErrorMessage ="Please comfirm your password.")]
-        [DataType(DataType.Password)]
-        public string confirmPass { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }

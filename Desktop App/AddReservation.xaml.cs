@@ -20,7 +20,8 @@ namespace Desktop_App
     /// </summary>
     public partial class AddReservation : Window
     {
-        private HotelEntities dx = new HotelEntities();
+        private HotelEntities dx;
+        private room r;
 
         public AddReservation()
         {
@@ -37,30 +38,24 @@ namespace Desktop_App
             try
             {
                 int.TryParse(roomNrBox.Text, out int roomnr);
-                if (roomnr != 0 &&
-                    phoneNr.Text.Length == 8 && 
-                    int.TryParse(phoneNr.Text, out _) &&
-                    startDate != null && 
-                    endDate != null && 
-                    0 >= DateTime.Compare(startDate.DisplayDate, endDate.DisplayDate) &&
-                    dx.rooms.Where(r => r.roomNr == roomnr).Count() != 0)
+                if (validator.phoneNrValidator(phoneNr.Text) &&
+                    validator.roomNrValidator(roomNrBox.Text, dx) &&
+                    validator.start_end_dateValidator(startDate, endDate, roomnr, dx))
                 {
+
                     responseBox.Content = "Reservation made for room: " + roomnr;
                     roomNrBox.Text = "";
 
                     dx.bookings.Load();
 
-                    int ID = dx.bookings.Local.Count;
-                    while(dx.bookings.Local.Where(book => book.ID == ID).Count() != 0)
-                    {
-                        ID++;
-                    }
-                    responseBox.Content += "\nReservation ID: " + ID;
-                    b.ID = ID;
+                    int id = validator.makeReservationID(dx);
+
+                    responseBox.Content += "\nReservation ID: " + id;
+                    b.ID = id;
                     b.phoneNr = phoneNr.Text;
                     b.roomNr = roomnr;
-                    b.startTime = startDate.DisplayDate;
-                    b.endTime = endDate.DisplayDate;
+                    b.startTime = startDate.SelectedDate.GetValueOrDefault();
+                    b.endTime = endDate.SelectedDate.GetValueOrDefault();
 
                     dx.bookings.Add(b);
                     dx.SaveChanges();
@@ -81,5 +76,7 @@ namespace Desktop_App
                 responseBox.Content = "Error making reservation.";
             }
         }
+
+
     }
 }
