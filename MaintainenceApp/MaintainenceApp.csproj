@@ -74,18 +74,12 @@
     <Compile Include="Cleaner.xaml.cs">
       <DependentUpon>Cleaner.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+    <!--<<<<<<< HEAD-->
     <Compile Include="CleanerEditor.xaml.cs">
       <DependentUpon>CleanerEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="cleanRequest.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="guest.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-=======
->>>>>>> 8dab3953168371259b9ed5fd50333da71f1d2313
+    <!--=======-->
+    <!-->>>>>>> 8dab3953168371259b9ed5fd50333da71f1d2313-->
     <Compile Include="Maintain.xaml.cs">
       <DependentUpon>Maintain.xaml</DependentUpon>
     </Compile>

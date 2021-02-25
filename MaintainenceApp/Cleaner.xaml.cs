@@ -13,13 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 {
 
     public partial class Cleaner : Window
     {
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
         private DbSet<room> rooms;
         private DbSet<booking> bookings;
@@ -37,11 +38,11 @@ namespace MaintainenceApp
         {
             InitializeComponent();
 
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
-            maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
+            rooms = dx.rooms;
+            bookings = dx.bookings;
+            cleanRequests = dx.cleanRequests;
+            maintainenceRequests = dx.maintainenceRequests;
+            roomServices = dx.roomServices;
 
             rooms.Load();
 
@@ -54,7 +55,7 @@ namespace MaintainenceApp
         //    throw new NotImplementedException();
         //}
 
-        public Cleaner(Hotel_ManagerEntities x) : this()
+        public Cleaner(HotelEntities x) : this()
         {
 
             dx = x;

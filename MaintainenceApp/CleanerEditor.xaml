@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CleanerEditor" Height="165" Width="800">
     <Grid>
-        <TextBox Name="task" HorizontalAlignment="Left" Height="23" Margin="50,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="task_TextChanged"/>
+        <TextBox Name="task" HorizontalAlignment="Left" Height="23" Margin="50,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
         <TextBox Name="taskNotes" HorizontalAlignment="Left" Height="23" Margin="202,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="50,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>-->
         <ComboBox Name="taskPlace" HorizontalAlignment="Left" Margin="202,31,0,0" VerticalAlignment="Top" Width="120">

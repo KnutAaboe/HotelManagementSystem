@@ -24,7 +24,7 @@ namespace MaintainenceApp
     public partial class CleanerEditor : Window
     {
 
-        private Hotel_ManagerEntities dx;
+        private HotelEntities dx;
         private DbSet<room> rooms;
 
         //private DbSet<room> rooms;
@@ -48,7 +48,7 @@ namespace MaintainenceApp
             //roomList.DataContext = rooms.Local;
         }
 
-        public CleanerEditor(Hotel_ManagerEntities x) : this() 
+        public CleanerEditor(HotelEntities x) : this() 
         {
             dx = x;
         }
