@@ -20,7 +20,7 @@ namespace MaintainenceApp
     /// </summary>
     public partial class Service : Window
     {
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
         //private DbSet<room> rooms;
         //private DbSet<booking> bookings;
@@ -29,7 +29,7 @@ namespace MaintainenceApp
         private DbSet<roomService> s;
 
 
-        public Service(Hotel_ManagerEntities x)
+        public Service(HotelEntities x)
         {
             InitializeComponent();
             dx =x;
