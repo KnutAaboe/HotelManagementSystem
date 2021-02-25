@@ -12,17 +12,16 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
-                        <GridViewColumn Width="100" Header="RequestTime" DisplayMemberBinding="{Binding Path=requestTime}" />
-                        <GridViewColumn Width="100" Header="RequestStatus" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                        <GridViewColumn Width="100" Header="Time" DisplayMemberBinding="{Binding Path=requestTime}" />
+                        <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding Path=requestStatus}" />
                         <GridViewColumn Width="100" Header="Note" DisplayMemberBinding="{Binding Path=note}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
-        <Label Name="messages" HorizontalAlignment="Center" Margin="300,5,0,0" VerticalAlignment="Top" Height="30" Width="200" Content="" />
-        <Button Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="145,9,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
-        <Button Name="buttonNeedMaintanace" Content="WIP maintanace" HorizontalAlignment="Left" Margin="233,9,0,0" VerticalAlignment="Top" Width="90" Click="buttonNeedMaintanace_click"/>
-        <Button Name="buttonMaintained" Content="Maintained" HorizontalAlignment="Left" Margin="335,9,0,0" VerticalAlignment="Top" Width="90" Click="buttonMaintainted_Click"/>
+        <TextBox Name="boxSearch" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="140,9,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
+        <Button Name="btnUpdateStatus" Content="Update status" HorizontalAlignment="Left" Margin="230,9,0,0" VerticalAlignment="Top" Width="80" Click="buttonUpdateStatus_Click"/>
+        <Label Name="lblMessages" HorizontalAlignment="Left" Margin="350,5,0,0" VerticalAlignment="Top" Height="30" Width="200" Content="" />
     </Grid>
 </Window>
