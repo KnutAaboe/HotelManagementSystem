@@ -32,21 +32,19 @@ namespace MaintainenceApp
 
         {
             InitializeComponent();
-
             maintainenceRequests = dx.maintainenceRequests;
-            
             maintainenceRequests.Load();
             roomMaintananceList.DataContext = maintainenceRequests.Local;
         }
 
 
-        //TODO: Implementer en metode for å søke etter et gitt romnummer
-        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        //Metode for å søke etter et gitt romnummer
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == boxSearch.Text);
         }
 
-
+        //Reseter search når searchbar er tom
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -56,15 +54,20 @@ namespace MaintainenceApp
             }
         }
 
+        //Velger elementer som skal manipuleres fra maintanance list
         private void maintananceList_Selector(object sender, SelectionChangedEventArgs e)
         {
             selected = ((maintainenceRequest)roomMaintananceList.SelectedItem);
             lblMessages.Content = "You have selected room " + selected.roomNr + ". The notes for this request is " + selected.note + ".";
         }
 
-        private void buttonUpdateStatus_Click(object sender, RoutedEventArgs e)
+
+
+        //Brukt til å oppdatere maintenance status for et gitt rom
+        /* private void btnUpdateStatus_Click(object sender, RoutedEventArgs e)
         {
-            if (((Button)sender).Content == "Maintained")
+            
+            if (((Button)sender).Content == "DONE")
             {
                 if (selected != null)
                 {
@@ -72,7 +75,11 @@ namespace MaintainenceApp
                     {
                         maintainenceRequests.Find(selected);
                         maintainenceRequests.Remove(selected);
-                        //maintainenceRequests.saveChanges(); //Funker ikke av en eller annen grunn
+
+                        //dx.bookings.Remove(dx.bookings.Find(selected.ID));
+
+                        maintainenceRequests.Add.selected();
+                        maintainenceRequests.; //Funker ikke av en eller annen grunn
                         selected = null;
                         maintainenceRequests.Load();
                         roomMaintananceList.DataContext = maintainenceRequests.Local;
@@ -85,6 +92,6 @@ namespace MaintainenceApp
                     }
                 }
             }
-        }
+        } */
     }
 }

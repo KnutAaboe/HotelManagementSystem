@@ -26,6 +26,6 @@
         <Button Background="DarkCyan" Name="buttonReserve" Content="Reserve Room" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="buttonReserve_Click"/>
         <Button Background="DarkCyan" Content="Reservations" HorizontalAlignment="Left" Margin="344,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Background="DarkMagenta" Name="responsBox" Content="" HorizontalAlignment="Left" Margin="224,385,0,0" VerticalAlignment="Top" Width="558"/>
-        <Button Background="DarkCyan" Name="editRoomBtn" Content="click a room" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="200" Click="editRoomBtn_Click"/>
+        <Button Background="Blue" Name="editRoomBtn" Content="click a room" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="200" Click="editRoomBtn_Click"/>
     </Grid>
 </Window>
