@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 namespace MaintainenceApp
 {
     /// <summary>
@@ -20,17 +21,24 @@ namespace MaintainenceApp
     /// </summary>
     public partial class Service : Window
     {
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
+        //private DbSet<room> rooms;
+        //private DbSet<booking> bookings;
+        //private DbSet<cleanRequest> cleanRequests;
+        //private DbSet<maintainenceRequest> maintainenceRequests;
+        //private DbSet<roomService> roomServices;
 
-        public Service(Hotel_ManagerEntities x)
+        public Service()
         {
+            InitializeComponent();
+        }
+
+        public Service(HotelEntities x) : this()
+        {
+
             dx =x;
+
                
 
         }

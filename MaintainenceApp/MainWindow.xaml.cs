@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 {
@@ -22,31 +23,17 @@ namespace MaintainenceApp
     public partial class MainWindow : Window
     {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
+        
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
         public MainWindow()
         {
             InitializeComponent();
-
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
-            maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
-
-            rooms.Load();
-
-            
         }
 
         private void getCleaner(object sender, RoutedEventArgs e)
         {
-            //new Cleaner();
+            new Cleaner().ShowDialog();
         }
 
         private void getMaintain(object sender, RoutedEventArgs e)

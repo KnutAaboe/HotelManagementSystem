@@ -1,12 +1,38 @@
-﻿<Window x:Class="MaintainenceApp.Window1"
+﻿<Window x:Class="MaintainenceApp.Cleaner"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaintainenceApp"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid>
+        Title="Cleaner" Height="450" Width="800">
+    <Grid RenderTransformOrigin="0.516,0.635">
+        <ListView Name="roomList" ItemsSource="{Binding}" RenderTransformOrigin="0.647,0.638" Margin="0,45,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="150" Header="Task" DisplayMemberBinding="{Binding Path=roomNr}"/>
+                        <GridViewColumn Width="250" Header="Notes" DisplayMemberBinding="{Binding Path=note}" />
+                        <GridViewColumn Width="150" Header="Doing" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                        <GridViewColumn Width="150" Header="Done" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="30,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="43" Height="23" Click="buttonSearch_Click"/>
+
+        <!--<Button name= "edit" Content="Button" HorizontalAlignment="Left" Margin="285,8,0,0" VerticalAlignment="Top" Width="75"/>-->
         
+        
+        <!--<ComboBox HorizontalAlignment="Left" Margin="138,43,0,0" VerticalAlignment="Top" Width="61" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem>Done</ComboBoxItem>
+            <ComboBoxItem>Doing</ComboBoxItem>
+        </ComboBox>
+        <CheckBox Content="" Height="10" Width="10" Margin="369,43,413,366"/>-->
+
+
+
+
     </Grid>
 </Window>
