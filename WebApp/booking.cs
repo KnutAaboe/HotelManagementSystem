@@ -11,7 +11,8 @@ namespace WebApp
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class booking
     {
         public int ID { get; set; }
@@ -19,10 +20,15 @@ namespace WebApp
         public int roomNr { get; set; }
 
         //System.DateTime
-        public DateTime startTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public System.DateTime startTime { get; set; }
 
         //System.DateTime
-        public DateTime endTime { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public System.DateTime endTime { get; set; }
     
         public virtual guest guest { get; set; }
         public virtual room room { get; set; }

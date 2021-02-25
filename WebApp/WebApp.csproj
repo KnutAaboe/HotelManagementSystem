@@ -192,11 +192,11 @@
     <Compile Include="Rooms\States\RoomState.cs" />
     <Compile Include="Rooms\RoomTypes\DoubleRoom.cs" />
     <Compile Include="Rooms\RoomTypes\SingleRoom.cs" />
-    <Content Include="Views\Guests\Create.cshtml" />
-    <Content Include="Views\Guests\Delete.cshtml" />
-    <Content Include="Views\Guests\Details.cshtml" />
-    <Content Include="Views\Guests\Edit.cshtml" />
-    <Content Include="Views\Guests\Index.cshtml" />
+    <Content Include="Views\guests\Create.cshtml" />
+    <Content Include="Views\guests\Delete.cshtml" />
+    <Content Include="Views\guests\Details.cshtml" />
+    <Content Include="Views\guests\Edit.cshtml" />
+    <Content Include="Views\guests\Index.cshtml" />
     <Content Include="Views\bookings\Create.cshtml" />
     <Content Include="Views\bookings\Delete.cshtml" />
     <Content Include="Views\bookings\Details.cshtml" />

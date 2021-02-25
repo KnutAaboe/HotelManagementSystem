@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Net;
-using System.Data.Entity;
+using WebApp;
 
 namespace WebApp.Controllers
 {
-    public class GuestsController : Controller
+    public class guestsController : Controller
     {
         private Hotel_ManagerEntities db = new Hotel_ManagerEntities();
 
-        // GET: Guests
+        // GET: guests
         public ActionResult Index()
         {
-
             return View(db.Guests.ToList());
         }
 
-        // GET: Guests/Details/5
-        public ActionResult Details(int? id)
+        // GET: guests/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -34,57 +35,31 @@ namespace WebApp.Controllers
             return View(guest);
         }
 
-        // GET: Guests/Create
+        // GET: guests/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guests/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: guests/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,firstname,lastname,username,pass,phoneNr,dob")] guest guest)
+        public ActionResult Create([Bind(Include = "firstname,lastname,phoneNr,dob,username,pass")] guest guest)
         {
-            try
-            {
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 db.Guests.Add(guest);
                 db.SaveChanges();
-                if (Request.Cookies["Auth"] == null)
-                {
-                    Response.Cookies["Auth"].Value = "1";
-                    Response.Cookies["GuestId"].Value = guest.id.ToString();
-
-                }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
 
             return View(guest);
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            {
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting  
-                        // the current instance as InnerException  
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
-            }
         }
 
-        // GET: Guests/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: guests/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -98,12 +73,12 @@ namespace WebApp.Controllers
             return View(guest);
         }
 
-        // POST: Guests/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: guests/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,firstname,lastname,username,pass,phoneNr,dob")] guest guest)
+        public ActionResult Edit([Bind(Include = "firstname,lastname,phoneNr,dob,username,pass")] guest guest)
         {
             if (ModelState.IsValid)
             {
@@ -114,8 +89,8 @@ namespace WebApp.Controllers
             return View(guest);
         }
 
-        // GET: Guests/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: guests/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -129,10 +104,10 @@ namespace WebApp.Controllers
             return View(guest);
         }
 
-        // POST: Guests/Delete/5
+        // POST: guests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             guest guest = db.Guests.Find(id);
             db.Guests.Remove(guest);
