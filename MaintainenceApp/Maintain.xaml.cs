@@ -33,44 +33,36 @@ namespace MaintainenceApp
         {
             InitializeComponent();
 
-            maintainenceRequests = dx.maintainenceRequest;
+            maintainenceRequests = dx.maintainenceRequests;
             
             maintainenceRequests.Load();
             roomMaintananceList.DataContext = maintainenceRequests.Local;
         }
 
+
+        //TODO: Implementer en metode for å søke etter et gitt romnummer
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Implementer en metode for å søke etter et gitt romnummer
-            roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == search.Text);
+            roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == boxSearch.Text);
         }
 
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            if (search.Text == "")
+            if (boxSearch.Text == "")
             {
                 roomMaintananceList.DataContext = this.maintainenceRequests.Local;
             }
         }
 
-
-        private void buttonNeedMaintanace_click(object sender, RoutedEventArgs e)
-        {
-            //TODO: Implementer en metode for å legge til nye maintenance requests
-            roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.reqStatus.ToString() == "Need maintanance");
-        }
-
-
         private void maintananceList_Selector(object sender, SelectionChangedEventArgs e)
         {
             selected = ((maintainenceRequest)roomMaintananceList.SelectedItem);
-            messages.Content = "You have selected room " + selected.roomNr + ". The notes for this request is " + selected.note + ".";
+            lblMessages.Content = "You have selected room " + selected.roomNr + ". The notes for this request is " + selected.note + ".";
         }
 
-
-        private void buttonMaintainted_Click(object sender, RoutedEventArgs e)
+        private void buttonUpdateStatus_Click(object sender, RoutedEventArgs e)
         {
             if (((Button)sender).Content == "Maintained")
             {
@@ -78,18 +70,18 @@ namespace MaintainenceApp
                 {
                     try
                     {
-                        dx.maintainenceRequest.Find(selected);
-                        dx.maintainenceRequest.Remove(selected);
-                        dx.SaveChanges();
+                        maintainenceRequests.Find(selected);
+                        maintainenceRequests.Remove(selected);
+                        maintainenceRequests.saveChanges(); //Funker ikke av en eller annen grunn
                         selected = null;
-                        dx.maintainenceRequest.Load();
-                        roomMaintananceList.DataContext = dx.maintainenceRequest.Local;
+                        maintainenceRequests.Load();
+                        roomMaintananceList.DataContext = maintainenceRequests.Local;
 
-                        messages.Content = "Maintanance request deleted";
+                        lblMessages.Content = "Maintanance request deleted";
                     }
                     catch
                     {
-                        messages.Content = "A problem while you where removing a maintanance request";
+                        lblMessages.Content = "A problem while you where removing a maintanance request";
                     }
                 }
             }
