@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 {
@@ -22,7 +23,8 @@ namespace MaintainenceApp
     public partial class MainWindow : Window
     {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
+        
 
         public MainWindow()
         {
