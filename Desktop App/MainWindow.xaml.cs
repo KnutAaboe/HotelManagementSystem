@@ -20,7 +20,7 @@ namespace Desktop_App
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window    {
-
+        
         private HotelEntities dx = new HotelEntities();
 
         private DbSet<room> rooms;
