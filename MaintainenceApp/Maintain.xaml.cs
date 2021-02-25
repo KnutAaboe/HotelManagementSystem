@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 {
@@ -22,13 +23,9 @@ namespace MaintainenceApp
     public partial class Window2 : Window
     {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
         private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
         private maintainenceRequest selected;
 
         public Window2()
@@ -36,19 +33,15 @@ namespace MaintainenceApp
         {
             InitializeComponent();
 
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
             maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
-
+            
             maintainenceRequests.Load();
-
             roomMaintananceList.DataContext = maintainenceRequests.Local;
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Implementer en metode for å søke etter et gitt romnummer
             roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == search.Text);
         }
 
@@ -65,6 +58,7 @@ namespace MaintainenceApp
 
         private void buttonNeedMaintanace_click(object sender, RoutedEventArgs e)
         {
+            //TODO: Implementer en metode for å legge til nye maintenance requests
             roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.reqStatus.ToString() == "Need maintanance");
         }
 
