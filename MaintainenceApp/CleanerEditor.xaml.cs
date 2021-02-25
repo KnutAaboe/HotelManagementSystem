@@ -24,25 +24,26 @@ namespace MaintainenceApp
     public partial class CleanerEditor : Window
     {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
-
+        private Hotel_ManagerEntities dx;
         private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
+
+        //private DbSet<room> rooms;
+        //private DbSet<booking> bookings;
+        //private DbSet<cleanRequest> cleanRequests;
+        //private DbSet<maintainenceRequest> maintainenceRequests;
+        //private DbSet<roomService> roomServices;
 
         public CleanerEditor()
         {
             InitializeComponent();
 
-            rooms = dx.room;
-            bookings = dx.booking;
-            cleanRequests = dx.cleanRequest;
-            maintainenceRequests = dx.maintainenceRequest;
-            roomServices = dx.roomService;
+            //rooms = dx.room;
+            //bookings = dx.booking;
+            //cleanRequests = dx.cleanRequest;
+            //maintainenceRequests = dx.maintainenceRequest;
+            //roomServices = dx.roomService;
 
-            rooms.Load();
+            //rooms.Load();
 
             //roomList.DataContext = rooms.Local;
         }
@@ -54,14 +55,11 @@ namespace MaintainenceApp
 
         private void taskPlacement_Click(object sender, RoutedEventArgs e)
         {
-            Cleaner c = new Cleaner();
-
-
-
             //Call e function which checks if submittet room matches one in roomsList
-
-
+            int roomnr = rooms.Where(room => room.roomNr == int.Parse(task.Text)).Count();
             
+
+
 
 
 

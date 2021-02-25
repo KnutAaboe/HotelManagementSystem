@@ -24,10 +24,6 @@ namespace Desktop_App
         private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
 
         private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
 
         private room selectedRoom;
 
@@ -36,10 +32,6 @@ namespace Desktop_App
             InitializeComponent();
 
             rooms = dx.rooms;
-            bookings = dx.bookings;
-            cleanRequests = dx.cleanRequests;
-            maintainenceRequests = dx.maintainenceRequests;
-            roomServices = dx.roomServices;
 
             rooms.Load();
 
