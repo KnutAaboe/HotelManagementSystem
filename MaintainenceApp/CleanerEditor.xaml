@@ -1,0 +1,20 @@
+﻿<Window x:Class="MaintainenceApp.CleanerEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaintainenceApp"
+        mc:Ignorable="d"
+        Title="CleanerEditor" Height="165" Width="800">
+    <Grid>
+        <TextBox Name="task" HorizontalAlignment="Left" Height="23" Margin="50,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+        <TextBox Name="taskNotes" HorizontalAlignment="Left" Height="23" Margin="202,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="50,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>-->
+        <ComboBox Name="taskPlace" HorizontalAlignment="Left" Margin="202,31,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Name="doing">Doing</ComboBoxItem>
+            <ComboBoxItem Name="done">Done</ComboBoxItem>
+        </ComboBox>
+        <Button Name="taskPlacement" Content="" HorizontalAlignment="Left" Margin="364,30,0,0" VerticalAlignment="Top" Width="101" Click="taskPlacement_Click"/>
+        <Button Name="taskNot" Content="" HorizontalAlignment="Left" Margin="364,68,0,0" VerticalAlignment="Top" Width="75" Click="taskNot_Click"/>
+    </Grid>
+</Window>

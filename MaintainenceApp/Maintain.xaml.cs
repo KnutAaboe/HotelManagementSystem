@@ -72,7 +72,7 @@ namespace MaintainenceApp
                     {
                         maintainenceRequests.Find(selected);
                         maintainenceRequests.Remove(selected);
-                        maintainenceRequests.saveChanges(); //Funker ikke av en eller annen grunn
+                        //maintainenceRequests.saveChanges(); //Funker ikke av en eller annen grunn
                         selected = null;
                         maintainenceRequests.Load();
                         roomMaintananceList.DataContext = maintainenceRequests.Local;

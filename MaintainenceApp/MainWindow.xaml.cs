@@ -33,7 +33,7 @@ namespace MaintainenceApp
 
         private void getCleaner(object sender, RoutedEventArgs e)
         {
-            //new Cleaner();
+            new Cleaner().ShowDialog();
         }
 
         private void getMaintain(object sender, RoutedEventArgs e)

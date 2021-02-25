@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Desktop_App;
 
 namespace MaintainenceApp
 {
@@ -19,29 +20,96 @@ namespace MaintainenceApp
     /// </summary>
     public partial class ChangeStatus : Window
     {
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
         public ChangeStatus()
         {
             InitializeComponent();
         }
 
-        public ChangeStatus(Hotel_ManagerEntities x) : this()
+        public ChangeStatus(HotelEntities x) : this()
         {
             dx = x;
         }
 
         private void UpdateInfo(object sender, RoutedEventArgs e)
         {
-            roomService rs = new roomService();
-            int.TryParse(roomNr.Text, out int roomNr2) {
+            //validator.roomNrValidator(roomNr.Text, dx);
+            if (
+                int.TryParse(roomNr.Text, out int roomNr2) &&
+                Status.Text != null &&
+                Date.DisplayDate != null
+                
+                )
+            {
+                roomService rs = dx.roomServices.SingleOrDefault( m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                roomService rs2 = new roomService();
+                rs2.roomNr = roomNr2;
+                rs2.reqStatus = Status.Text;
+                rs2.requestTime = Date.DisplayDate;
+                rs2.note = Note.Text;
+                if(rs!=null)
+                {
+                    dx.roomServices.Remove(rs);
+                }
+                dx.roomServices.Add(rs2);
+                dx.SaveChanges();
+            } else
+            {
 
             }
-            rs.roomNr=roomNr2;
-            rs.reqStatus = Status.Text;
-            rs.requestTime = Date.DisplayDate;
-            rs.note = Note.Text;
-            dx.roomService.Add(rs);
-            dx.SaveChanges();
+            
+          
+        }
+
+        private void addRequest(object sender, RoutedEventArgs e)
+        {
+            if (
+               int.TryParse(roomNr.Text, out int roomNr2) &&
+               Status.Text != null &&
+               Date.DisplayDate != null
+
+               )
+            {
+                roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                roomService rs2 = new roomService();
+                rs2.roomNr = roomNr2;
+                rs2.reqStatus = Status.Text;
+                rs2.requestTime = Date.DisplayDate;
+                rs2.note = Note.Text;
+                if (rs == null)
+                {
+                    dx.roomServices.Add(rs2);
+                }
+                dx.SaveChanges();
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void deleteRequest(object sender, RoutedEventArgs e)
+        {
+            if (
+              int.TryParse(roomNr.Text, out int roomNr2) &&
+              Status.Text != null &&
+              Date.DisplayDate != null
+
+              )
+            {
+                roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                if (rs != null)
+                {
+                    dx.roomServices.Remove(rs);
+                }
+                dx.SaveChanges();
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
