@@ -15,6 +15,6 @@
             <ComboBoxItem Name="done">Done</ComboBoxItem>
         </ComboBox>
         <Button Name="taskPlacement" Content="" HorizontalAlignment="Left" Margin="364,30,0,0" VerticalAlignment="Top" Width="101" Click="taskPlacement_Click"/>
-        <Button Name="taskNot" Content="" HorizontalAlignment="Left" Margin="364,68,0,0" VerticalAlignment="Top" Width="75" Click="taskNot_Click"/>
+        <Button Name="taskNote" Content="" HorizontalAlignment="Left" Margin="364,68,0,0" VerticalAlignment="Top" Width="75" Click="taskNot_Click"/>
     </Grid>
 </Window>

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Desktop_App;
+using WebApp;
 
 namespace MaintainenceApp
 {
@@ -22,11 +23,11 @@ namespace MaintainenceApp
     {
         private HotelEntities dx = new HotelEntities();
 
-        private DbSet<room> rooms;
-        private DbSet<booking> bookings;
-        private DbSet<cleanRequest> cleanRequests;
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private DbSet<roomService> roomServices;
+        private DbSet<Desktop_App.room> rooms;
+        //private DbSet<booking> bookings;
+        //private DbSet<cleanRequest> cleanRequests;
+        //private DbSet<maintainenceRequest> maintainenceRequests;
+        //private DbSet<roomService> roomServices;
 
         //private DbSet<room> rooms;
         //private DbSet<booking> bookings;
@@ -39,10 +40,6 @@ namespace MaintainenceApp
             InitializeComponent();
 
             rooms = dx.rooms;
-            bookings = dx.bookings;
-            cleanRequests = dx.cleanRequests;
-            maintainenceRequests = dx.maintainenceRequests;
-            roomServices = dx.roomServices;
 
             rooms.Load();
 
@@ -66,7 +63,12 @@ namespace MaintainenceApp
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            roomList.DataContext = rooms.Local.Where(room => room.roomNr == int.Parse(search.Text));
+            roomList.DataContext = validator.roomNrValidator(search.Text, dx);
+        }
+
+        private void editor_Click(object sender, RoutedEventArgs e)
+        {
+            new CleanerEditor().ShowDialog();
         }
     }
 }

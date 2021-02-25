@@ -25,27 +25,12 @@ namespace MaintainenceApp
     {
 
         private HotelEntities dx;
+        private room r;
         private DbSet<room> rooms;
-
-        //private DbSet<room> rooms;
-        //private DbSet<booking> bookings;
-        //private DbSet<cleanRequest> cleanRequests;
-        //private DbSet<maintainenceRequest> maintainenceRequests;
-        //private DbSet<roomService> roomServices;
 
         public CleanerEditor()
         {
             InitializeComponent();
-
-            //rooms = dx.room;
-            //bookings = dx.booking;
-            //cleanRequests = dx.cleanRequest;
-            //maintainenceRequests = dx.maintainenceRequest;
-            //roomServices = dx.roomService;
-
-            //rooms.Load();
-
-            //roomList.DataContext = rooms.Local;
         }
 
         public CleanerEditor(HotelEntities x) : this() 
@@ -55,20 +40,53 @@ namespace MaintainenceApp
 
         private void taskPlacement_Click(object sender, RoutedEventArgs e)
         {
-            //Call e function which checks if submittet room matches one in roomsList
-            int roomnr = rooms.Where(room => room.roomNr == int.Parse(task.Text)).Count();
-            
+            cleanRequest cr = new cleanRequest();
+
+            //Check if submittet room matches one in roomsList && find the right room property
+            int roomNr = rooms.Where(room => room.roomNr == int.Parse(task.Text)).Count();
+            room bestRoom = (room)rooms.Where(room => room.roomNr == int.Parse(task.Text));
+
+            //Place roomnr to right list
+            String status;
 
 
+
+            switch (taskPlace.SelectedItem.ToString())
+            {
+                case "doing":
+                    status = "DOING";
+                    break;
+
+                case "done":
+                    status = "DONE";
+                    break;
+
+                default:
+                    status = "";
+                    break;
+                   
+            }
+
+            if (!(status == ""))
+            {
+                bestRoom.roomState = status;
+            }
+
+            dx.SaveChanges();
+
+            //TODO DOING DONE
 
 
 
 
         }
 
-        private void taskNot_Click(object sender, RoutedEventArgs e)
+        private void taskNote_Click(object sender, RoutedEventArgs e)
         {
-            //Call e function which checks if submittet room matches one in roomsList
+            //Check if submittet room matches one in roomsList
+
+
+            //Add note to task
 
 
         }

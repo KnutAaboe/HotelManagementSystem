@@ -24,7 +24,12 @@ namespace MaintainenceApp
     {
 
         private HotelEntities dx = new HotelEntities();
-        
+        private DbSet<room> room;
+        private DbSet<booking> booking;
+        private DbSet<cleanRequest> cleanRequest;
+        private DbSet<maintainenceRequest> maintainenceRequest;
+        private DbSet<roomService> roomService;
+
 
         public MainWindow()
         {
@@ -33,7 +38,7 @@ namespace MaintainenceApp
 
         private void getCleaner(object sender, RoutedEventArgs e)
         {
-            new Cleaner().ShowDialog();
+            new Cleaner(dx).ShowDialog();
         }
 
         private void getMaintain(object sender, RoutedEventArgs e)

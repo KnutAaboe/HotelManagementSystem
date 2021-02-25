@@ -150,6 +150,10 @@
       <Project>{c810fb57-eed0-474a-bc03-72cde347f989}</Project>
       <Name>Desktop App</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebApp\WebApp.csproj">
+      <Project>{662d6b2a-a2f1-4de5-9090-302ac1c0667e}</Project>
+      <Name>WebApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Desktop App\Desktop App.csproj">
