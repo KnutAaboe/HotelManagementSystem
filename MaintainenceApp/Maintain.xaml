@@ -19,7 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="boxSearch" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+        <TextBox Name="boxSearch" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="Room Number" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
         <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="140,9,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
         <Button Name="btnUpdateStatus" Content="Update status" HorizontalAlignment="Left" Margin="230,9,0,0" VerticalAlignment="Top" Width="80" Click="buttonUpdateStatus_Click"/>
         <Label Name="lblMessages" HorizontalAlignment="Left" Margin="350,5,0,0" VerticalAlignment="Top" Height="30" Width="200" Content="" />
