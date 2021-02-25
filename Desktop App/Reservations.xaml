@@ -23,8 +23,9 @@
         <Button Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="628,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Name="editButton" Content="Edit" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Width="75" Click="editButton_Click" RenderTransformOrigin="0.984,0.55"/>
         <Button Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="576,10,0,0" VerticalAlignment="Top" Width="47" Click="refresh_Click"/>
-        <Button Name="roomServiceBtn" Content="Room Service" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.132,-0.162" Click="roomServiceBtn_Click"/>
-        <Button Name="maintainenceBtn" Content="Maintainence" HorizontalAlignment="Left" Margin="108,389,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.132,-0.162" Click="maintainenceBtn_Click"/>
-        <Label Name="roomSelected" Content="" HorizontalAlignment="Left" Margin="206,386,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-0.206" Width="576" FontSize="14"/>
+        <Button Name="service" Content="Room Service" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.132,-0.162" Click="ServiceBtn_Click"/>
+        <Button Name="maintainence" Content="Maintainence" HorizontalAlignment="Left" Margin="108,389,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.132,-0.162" Click="ServiceBtn_Click"/>
+        <Button Name="clean" Content="room cleaning" HorizontalAlignment="Left" Margin="206,389,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.132,-0.162" Click="ServiceBtn_Click"/>
+        <Label Name="roomSelected" Content="" HorizontalAlignment="Left" Margin="304,386,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,-0.206" Width="478" FontSize="14"/>
     </Grid>
 </Window>
