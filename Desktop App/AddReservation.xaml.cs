@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,6 @@ namespace Desktop_App
     public partial class AddReservation : Window
     {
         private HotelEntities dx;
-        private room r;
 
         public AddReservation()
         {
@@ -30,6 +30,15 @@ namespace Desktop_App
         public AddReservation(HotelEntities x) : this()
         {
             dx = x;
+
+            DbSet<guest> gs = dx.guests;
+            
+            foreach(guest g in gs)
+            {
+                ComboBoxItem c = new ComboBoxItem();
+                c.Content = g.phoneNr + " - " + g.username;
+                pickFromList.Items.Add(c);
+            }
         }
 
         private void addResBtn_Click(object sender, RoutedEventArgs e)
@@ -77,6 +86,31 @@ namespace Desktop_App
             }
         }
 
+        private void pickFromList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //try
+            //{
+            ComboBoxItem cb = (ComboBoxItem)pickFromList.SelectedItem;
+            string pn = cb.Content.ToString().Substring(0,8);
+            
+            dx.guests.Load();
+            DbSet<guest> gs = dx.guests;
+            guest g = gs.Find(pn);
 
+                if (g != null)
+                {
+                    phoneNr.Text = g.phoneNr;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            //}
+            //catch
+            //{
+            //    phoneNr.Text = null;
+            //    responseBox.Content = "Error picking user.";
+            //}
+        }
     }
 }

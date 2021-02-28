@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Desktop_App
 {
-    public static class validator
+    static class validator
     {
         public static bool phoneNrValidator(string nr)
         {

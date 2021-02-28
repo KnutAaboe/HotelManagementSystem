@@ -1,13 +1,17 @@
 ﻿<Window x:Class="Desktop_App.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListView Name="roomList" ItemsSource="{Binding}" Margin="0,38,0,0" SelectionChanged="roomList_SelectionChanged">
+    <!--<Grid>
+        <ListView Name="roomList" ItemsSource="{Binding}" Margin="0,38,0,0" SelectionChanged="roomList_SelectionChanged">-->
+
+    <Grid Background="DeepPink">
+        <ListView Background="PaleTurquoise" Name="roomList" ItemsSource="{Binding}" Margin="0,38,0,44" SelectionChanged="roomList_SelectionChanged">
+
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -21,12 +25,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+
+        <!--<TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
         <Button Name="buttonSearch" Content="Seach" HorizontalAlignment="Left" Margin="135,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
         <Button Name="buttonReserve" Content="Reserve Room" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="buttonReserve_Click"/>
         <Button Content="Reservations" HorizontalAlignment="Left" Margin="344,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Name="responsBox" Content="" HorizontalAlignment="Left" Margin="224,385,0,0" VerticalAlignment="Top" Width="558"/>
-        <Button Name="editRoomBtn" Content="click a room" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="200" Click="editRoomBtn_Click"/>
+        <Button Name="editRoomBtn" Content="click a room" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="200" Click="editRoomBtn_Click"/>-->
+
+        <TextBox Background="Yellow" Name="search" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="RoomNr" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged"/>
+        <Button Background="DarkCyan" Name="buttonSearch" Content="Seach" HorizontalAlignment="Left" Margin="135,13,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.041,-0.619" Click="buttonSearch_Click"/>
+        <Button Background="DarkCyan" Name="buttonReserve" Content="Reserve Room" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="buttonReserve_Click"/>
+        <Button Background="DarkCyan" Content="Reservations" HorizontalAlignment="Left" Margin="344,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Background="DarkMagenta" Name="responsBox" Content="" HorizontalAlignment="Left" Margin="224,385,0,0" VerticalAlignment="Top" Width="558"/>
+        <Button Background="Blue" Name="editRoomBtn" Content="click a room" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="200" Click="editRoomBtn_Click"/>
+
     </Grid>
 </Window>

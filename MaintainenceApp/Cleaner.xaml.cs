@@ -61,7 +61,7 @@ namespace MaintainenceApp
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            roomList.DataContext = validator.roomNrValidator(search.Text, dx);
+            //roomList.DataContext = validator.roomNrValidator(search.Text, dx);
         }
 
         private void editor_Click(object sender, RoutedEventArgs e)
