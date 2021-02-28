@@ -36,6 +36,7 @@ namespace MaintainenceApp
         public CleanerEditor(HotelEntities x) : this() 
         {
             dx = x;
+            rooms = dx.rooms;
         }
 
         private void taskPlacement_Click(object sender, RoutedEventArgs e)
@@ -43,8 +44,13 @@ namespace MaintainenceApp
             cleanRequest cr = new cleanRequest();
 
             //Check if submittet room matches one in roomsList && find the right room property
-            int roomNr = rooms.Where(room => room.roomNr == int.Parse(task.Text)).Count();
-            room bestRoom = (room)rooms.Where(room => room.roomNr == int.Parse(task.Text));
+            //int roomNr = rooms.Where(room => room.roomNr == int.Parse(task.Text));
+            rooms.Load();
+            //room bestRoom = (room)rooms.Local.Where(room => room.roomNr == int.Parse(task.Text)).First();
+            int.TryParse(task.Text, out int room2);
+            //cleanRequest bestClean = dx.cleanRequests.Where(room => room.roomNr == room2).First();
+            cleanRequest bestClean = dx.cleanRequests.SingleOrDefault(room => room.roomNr == room2);
+
 
             //Place roomnr to right list
             String status;
@@ -53,11 +59,11 @@ namespace MaintainenceApp
 
             switch (taskPlace.SelectedItem.ToString())
             {
-                case "doing":
+                case "Doing":
                     status = "DOING";
                     break;
 
-                case "done":
+                case "Done":
                     status = "DONE";
                     break;
 
@@ -69,10 +75,13 @@ namespace MaintainenceApp
 
             if (!(status == ""))
             {
-                bestRoom.roomState = status;
+                //bestRoom.roomState = status;
+                bestClean.reqStatus = status;
+                
             }
 
             dx.SaveChanges();
+            this.Close();
 
             //TODO DOING DONE
 

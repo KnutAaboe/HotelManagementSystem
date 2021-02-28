@@ -21,7 +21,7 @@ namespace Desktop_App
     /// </summary>
     public partial class MainWindow : Window    {
 
-        private Hotel_ManagerEntities dx = new Hotel_ManagerEntities();
+        private HotelEntities dx = new HotelEntities();
 
         private DbSet<room> rooms;
 
@@ -58,12 +58,12 @@ namespace Desktop_App
             new AddReservation(dx).ShowDialog();
         }
 
-<<<<<<< HEAD
+
         //private void roomList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
 
         //}
-=======
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new Reservations(dx).ShowDialog();
@@ -82,6 +82,5 @@ namespace Desktop_App
             //responsBox.Content = "room selected: " + selectedRoom.roomNr;
             editRoomBtn.Content = "Options for room: " + selectedRoom.roomNr;
         }
->>>>>>> 9de7fedf54a3e886a3d6ae6dc1c41738bab058cc
     }
 }

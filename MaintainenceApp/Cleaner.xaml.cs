@@ -25,7 +25,7 @@ namespace MaintainenceApp
 
         private DbSet<Desktop_App.room> rooms;
         //private DbSet<booking> bookings;
-        //private DbSet<cleanRequest> cleanRequests;
+        private DbSet<Desktop_App.cleanRequest> cleanRequests;
         //private DbSet<maintainenceRequest> maintainenceRequests;
         //private DbSet<roomService> roomServices;
 
@@ -54,12 +54,10 @@ namespace MaintainenceApp
 
         public Cleaner(HotelEntities x) : this()
         {
-
             dx = x;
 
-
-
         }
+
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +66,7 @@ namespace MaintainenceApp
 
         private void editor_Click(object sender, RoutedEventArgs e)
         {
-            new CleanerEditor().ShowDialog();
+            new CleanerEditor(dx).ShowDialog();
         }
     }
 }
