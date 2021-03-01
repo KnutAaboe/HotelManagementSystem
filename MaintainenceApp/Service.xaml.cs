@@ -23,13 +23,6 @@ namespace MaintainenceApp
     public partial class Service : Window
     {
         private HotelEntities dx = new HotelEntities();
-
-        //private Boolean sortNr = false;
-
-        //private DbSet<room> rooms;
-        //private DbSet<booking> bookings;
-        //private DbSet<cleanRequest> cleanRequests;
-        //private DbSet<maintainenceRequest> maintainenceRequests;
         private DbSet<roomService> service;
 
 

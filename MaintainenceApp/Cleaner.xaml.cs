@@ -24,23 +24,6 @@ namespace MaintainenceApp
         private HotelEntities dx = new HotelEntities();
         private DbSet<Desktop_App.cleanRequest> cleanRequests;
 
-        //public Cleaner()
-        //{
-        //    InitializeComponent();
-
-        //    dx = x;
-
-        //    rooms.Load();
-
-        //    roomList.DataContext = rooms.Local;
-
-        //}
-
-        ////private void InitializeComponent()
-        ////{
-        ////    throw new NotImplementedException();
-        ////}
-
         public Cleaner(HotelEntities x) 
         {
             InitializeComponent();
@@ -51,16 +34,21 @@ namespace MaintainenceApp
 
         }
 
-
-        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        private void ChangeStat(object sender, RoutedEventArgs e)
         {
-            //roomList.DataContext = validator.roomNrValidator(search.Text, dx);
-        }
-
-        private void editor_Click(object sender, RoutedEventArgs e)
-        {
-            //new CleanerEditor(dx).ShowDialog();
             new ChangeStatus(dx).ShowDialog();
         }
+
+
+        //private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //roomList.DataContext = validator.roomNrValidator(search.Text, dx);
+        //}
+
+        //private void editor_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //new CleanerEditor(dx).ShowDialog();
+        //    new ChangeStatus(dx).ShowDialog();
+        //}
     }
 }

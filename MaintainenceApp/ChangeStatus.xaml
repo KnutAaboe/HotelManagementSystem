@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaintainenceApp"
         mc:Ignorable="d"
-        Title="ChangeStatus" Height="255.698" Width="800">
+        Title="ChangeStatus" Height="255.698" Width="900">
     <Grid Margin="-5,0,3.6,0.4">
 
         <DatePicker Name="Date" HorizontalAlignment="Left" Margin="378,57,0,0" VerticalAlignment="Top" DisplayDate="2021-02-22" FirstDayOfWeek="Monday" Width="112" Height="23"/>
@@ -14,9 +14,10 @@
         <Label Content="Date" HorizontalAlignment="Left" Margin="378,22,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
         <TextBox Name="Status" HorizontalAlignment="Left" Height="23" Margin="223,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.392,0.492"/>
         <Label Content="Status" HorizontalAlignment="Left" Margin="234,22,0,0" VerticalAlignment="Top" Width="90" Height="26"/>
-        <Button Content="Update request info" HorizontalAlignment="Left" Margin="553,57,0,0" VerticalAlignment="Top" Width="133" Click="UpdateInfo" Height="23"/>
-        <Button Content="Add request" HorizontalAlignment="Left" Margin="553,107,0,0" VerticalAlignment="Top" Width="133" Click="addRequest" Height="23"/>
-        <Button Content="Delete request" HorizontalAlignment="Left" Margin="553,157,0,0" VerticalAlignment="Top" Width="133" Click="deleteRequest" Height="23"/>
+        <Button Content="Update request info" HorizontalAlignment="Left" Margin="697,57,0,0" VerticalAlignment="Top" Width="133" Click="UpdateInfo" Height="23"/>
+        <Button Content="Add request" HorizontalAlignment="Left" Margin="697,108,0,0" VerticalAlignment="Top" Width="133" Click="addRequest" Height="23"/>
+        
+        <Button Content="Delete request" HorizontalAlignment="Left" Margin="697,157,0,0" VerticalAlignment="Top" Width="133" Click="deleteRequest" Height="23"/>
         <Label Content="Note" HorizontalAlignment="Left" Margin="75,88,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -28,5 +29,10 @@
             </Label.RenderTransform>
         </Label>
         <TextBox Name="Note" HorizontalAlignment="Left" Height="87" Margin="75,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <ComboBox Name="choice" HorizontalAlignment="Left" Margin="541,57,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem>Service</ComboBoxItem>
+            <ComboBoxItem>Cleaning</ComboBoxItem>
+
+        </ComboBox>
     </Grid>
 </Window>
