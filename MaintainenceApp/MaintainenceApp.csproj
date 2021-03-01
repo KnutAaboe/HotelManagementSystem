@@ -70,14 +70,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangeStatus.xaml.cs">
+      <DependentUpon>ChangeStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Cleaner.xaml.cs">
       <DependentUpon>Cleaner.xaml</DependentUpon>
     </Compile>
     <!--<<<<<<< HEAD-->
-    <Compile Include="CleanerEditor.xaml.cs">
-      <DependentUpon>CleanerEditor.xaml</DependentUpon>
-    </Compile>
     <!--=======-->
     <!-->>>>>>> 8dab3953168371259b9ed5fd50333da71f1d2313-->
     <Compile Include="Maintain.xaml.cs">
@@ -86,11 +86,11 @@
     <Compile Include="Service.xaml.cs">
       <DependentUpon>Service.xaml</DependentUpon>
     </Compile>
-    <Page Include="Cleaner.xaml">
+    <Page Include="ChangeStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CleanerEditor.xaml">
+    <Page Include="Cleaner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

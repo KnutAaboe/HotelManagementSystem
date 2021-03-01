@@ -45,12 +45,12 @@ namespace MaintainenceApp
 
         private void ChangeStat(object sender, RoutedEventArgs e)
         {
-            //new ChangeStatus(dx).ShowDialog();
+            new ChangeStatus(dx).ShowDialog();
         }
 
-        //private void sortRoomNr(object sender, RoutedEventArgs e)
-        //{
-        //    //service.Local.
-        //}
+        private void sortRoomNr(object sender, RoutedEventArgs e)
+        {
+            //service.Local.
+        }
     }
 }

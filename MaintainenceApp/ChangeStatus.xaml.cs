@@ -38,31 +38,35 @@ namespace MaintainenceApp
                 int.TryParse(roomNr.Text, out int roomNr2) &&
                 Status.Text != null &&
                 Date.DisplayDate != null
-                
+
                 )
             {
-                roomService rs = dx.roomServices.SingleOrDefault( m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                Console.WriteLine(sender + "  " + e);
+                roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
                 roomService rs2 = new roomService();
                 rs2.roomNr = roomNr2;
                 rs2.reqStatus = Status.Text;
                 rs2.requestTime = Date.DisplayDate;
                 rs2.note = Note.Text;
-                if(rs!=null)
+                if (rs != null)
                 {
                     dx.roomServices.Remove(rs);
                 }
                 dx.roomServices.Add(rs2);
                 dx.SaveChanges();
-            } else
+            }
+            else
             {
 
             }
-            
-          
+
+
         }
 
         private void addRequest(object sender, RoutedEventArgs e)
         {
+            Button btn = (Button)sender;
+
             if (
                int.TryParse(roomNr.Text, out int roomNr2) &&
                Status.Text != null &&
@@ -70,23 +74,58 @@ namespace MaintainenceApp
 
                )
             {
-                roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
-                roomService rs2 = new roomService();
-                rs2.roomNr = roomNr2;
-                rs2.reqStatus = Status.Text;
-                rs2.requestTime = Date.DisplayDate;
-                rs2.note = Note.Text;
-                if (rs == null)
+
+                switch (btn.Content)
                 {
-                    dx.roomServices.Add(rs2);
+
+                    case "Add service":
+                        roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                        roomService rs2 = new roomService();
+                        rs2.roomNr = roomNr2;
+                        rs2.reqStatus = Status.Text;
+                        rs2.requestTime = Date.DisplayDate;
+                        rs2.note = Note.Text;
+                        if (rs == null)
+                        {
+                            dx.roomServices.Add(rs2);
+                        }
+                        //dx.SaveChanges();
+
+                        break;
+
+                    case "Add clean":
+                        cleanRequest cr = dx.cleanRequests.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                        cleanRequest cr2 = new cleanRequest();
+                        cr2.roomNr = roomNr2;
+                        cr2.reqStatus = Status.Text;
+                        cr2.requestTime = Date.DisplayDate;
+                        cr2.note = Note.Text;
+                        if (cr== null)
+                        {
+                            dx.cleanRequests.Add(cr2);
+                        }
+
+                        break;
                 }
+
                 dx.SaveChanges();
 
-            }
-            else
-            {
+
+
+                //roomService rs = dx.roomServices.SingleOrDefault(m => (m.roomNr == roomNr2) && (m.requestTime == Date.DisplayDate));
+                //roomService rs2 = new roomService();
+                //rs2.roomNr = roomNr2;
+                //rs2.reqStatus = Status.Text;
+                //rs2.requestTime = Date.DisplayDate;
+                //rs2.note = Note.Text;
+                //if (rs == null)
+                //{
+                //    dx.roomServices.Add(rs2);
+                //}
+                //dx.SaveChanges();
 
             }
+            
         }
 
         private void deleteRequest(object sender, RoutedEventArgs e)

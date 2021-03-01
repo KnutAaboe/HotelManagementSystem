@@ -22,39 +22,32 @@ namespace MaintainenceApp
     public partial class Cleaner : Window
     {
         private HotelEntities dx = new HotelEntities();
-
-        private DbSet<Desktop_App.room> rooms;
-        //private DbSet<booking> bookings;
         private DbSet<Desktop_App.cleanRequest> cleanRequests;
-        //private DbSet<maintainenceRequest> maintainenceRequests;
-        //private DbSet<roomService> roomServices;
 
-        //private DbSet<room> rooms;
-        //private DbSet<booking> bookings;
-        //private DbSet<cleanRequest> cleanRequests;
-        //private DbSet<maintainenceRequest> maintainenceRequests;
-        //private DbSet<roomService> roomServices;
-
-        public Cleaner()
-        {
-            InitializeComponent();
-
-            rooms = dx.rooms;
-
-            rooms.Load();
-
-            roomList.DataContext = rooms.Local;
-
-        }
-
-        //private void InitializeComponent()
+        //public Cleaner()
         //{
-        //    throw new NotImplementedException();
+        //    InitializeComponent();
+
+        //    dx = x;
+
+        //    rooms.Load();
+
+        //    roomList.DataContext = rooms.Local;
+
         //}
 
-        public Cleaner(HotelEntities x) : this()
+        ////private void InitializeComponent()
+        ////{
+        ////    throw new NotImplementedException();
+        ////}
+
+        public Cleaner(HotelEntities x) 
         {
+            InitializeComponent();
             dx = x;
+            cleanRequests = dx.cleanRequests;
+            cleanRequests.Load();
+            cleanList.DataContext = cleanRequests.Local;
 
         }
 
@@ -66,7 +59,8 @@ namespace MaintainenceApp
 
         private void editor_Click(object sender, RoutedEventArgs e)
         {
-            new CleanerEditor(dx).ShowDialog();
+            //new CleanerEditor(dx).ShowDialog();
+            new ChangeStatus(dx).ShowDialog();
         }
     }
 }

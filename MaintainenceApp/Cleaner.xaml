@@ -7,22 +7,19 @@
         mc:Ignorable="d"
         Title="Cleaner" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.516,0.635">
-        <ListView Name="roomList" ItemsSource="{Binding}" RenderTransformOrigin="0.647,0.638" Margin="0,45,0,0">
+        <ListView Name="cleanList" ItemsSource="{Binding}" RenderTransformOrigin="0.647,0.638" Margin="0,45,0,0">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="Task" DisplayMemberBinding="{Binding Path=roomNr}"/>
-                        <GridViewColumn Width="250" Header="Notes" DisplayMemberBinding="{Binding Path=note}" />
+                        <GridViewColumn Width="250" Header="Notes" DisplayMemberBinding="{Binding Path=reqStatus}" />
                         <GridViewColumn Width="100" Header="Deadline" DisplayMemberBinding="{Binding Path=requestTime}"/>
-                        <GridViewColumn Width="150" Header="Status" DisplayMemberBinding="{Binding Path=reqStatus}" />
+                        <GridViewColumn Width="150" Header="Status" DisplayMemberBinding="{Binding Path=notes}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="search" HorizontalAlignment="Left" Height="23" Margin="30,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="43" Height="23" Click="buttonSearch_Click"/>
-        <Button Name="editor" Content="Editor" HorizontalAlignment="Left" Margin="251,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.246,0.905" Click="editor_Click"/>
-
+        <Button Name="buttonReserve" Content="Change Status" HorizontalAlignment="Left" Margin="435,13,0,0" VerticalAlignment="Top" Width="90" Click="ChangeStat"/>
         <!--<Button name= "edit" Content="Button" HorizontalAlignment="Left" Margin="285,8,0,0" VerticalAlignment="Top" Width="75"/>-->
         
         

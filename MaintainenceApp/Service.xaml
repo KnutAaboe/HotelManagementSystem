@@ -15,7 +15,7 @@
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="RoomNr" DisplayMemberBinding="{Binding Path=roomNr}" />
                         <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding Path=reqStatus}" />
-                        <GridViewColumn Width="100" Header="Date" DisplayMemberBinding="{Binding Path=requestTime}" />
+                        <GridViewColumn Width="175" Header="Date" DisplayMemberBinding="{Binding Path=requestTime}" />
                         <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=notes}" />
                     </GridView.Columns>
                 </GridView>
