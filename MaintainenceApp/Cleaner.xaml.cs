@@ -22,15 +22,15 @@ namespace MaintainenceApp
     public partial class Cleaner : Window
     {
         private HotelEntities dx = new HotelEntities();
-        private DbSet<Desktop_App.cleanRequest> cleanRequests;
+        private DbSet<Desktop_App.cleanRequest> cleanRequest;
 
         public Cleaner(HotelEntities x) 
         {
             InitializeComponent();
             dx = x;
-            cleanRequests = dx.cleanRequests;
-            cleanRequests.Load();
-            cleanList.DataContext = cleanRequests.Local;
+            cleanRequest = dx.cleanRequests;
+            cleanRequest.Load();
+            cleanList.DataContext = cleanRequest.Local;
 
         }
 

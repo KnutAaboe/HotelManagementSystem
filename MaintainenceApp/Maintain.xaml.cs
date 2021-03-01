@@ -18,81 +18,26 @@ using Desktop_App;
 namespace MaintainenceApp
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for Maintain.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class Maintain : Window
     {
-
         private HotelEntities dx = new HotelEntities();
+        private DbSet<Desktop_App.maintainenceRequest> maintainenceRequest;
 
-        private DbSet<maintainenceRequest> maintainenceRequests;
-        private maintainenceRequest selected;
-
-        public Window2()
-
+        public Maintain(HotelEntities x)
         {
             InitializeComponent();
-
-            maintainenceRequests = dx.maintainenceRequests;
-            
-            maintainenceRequests.Load();
-            roomMaintananceList.DataContext = maintainenceRequests.Local;
+            dx = x;
+            maintainenceRequest = dx.maintainenceRequests;
+            maintainenceRequest.Load();
+            MaintainList.DataContext = maintainenceRequest.Local;
+            //maintainenceL.DataContext = maintainenceRequest.Local;
         }
 
-
-        //TODO: Implementer en metode for å søke etter et gitt romnummer
-        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        private void ChangeStat(object sender, RoutedEventArgs e)
         {
-            roomMaintananceList.DataContext = maintainenceRequests.Local.Where(r => r.roomNr.ToString() == boxSearch.Text);
-        }
-
-
-        private void search_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            if (boxSearch.Text == "")
-            {
-                roomMaintananceList.DataContext = this.maintainenceRequests.Local;
-            }
-        }
-
-        private void maintananceList_Selector(object sender, SelectionChangedEventArgs e)
-        {
-            selected = ((maintainenceRequest)roomMaintananceList.SelectedItem);
-            lblMessages.Content = "You have selected room " + selected.roomNr + ". The notes for this request is " + selected.note + ".";
-        }
-
-        private void buttonUpdateStatus_Click(object sender, RoutedEventArgs e)
-        {
-            if (((Button)sender).Content == "Maintained")
-            {
-                if (selected != null)
-                {
-                    try
-                    {
-                        maintainenceRequests.Find(selected);
-                        maintainenceRequests.Remove(selected);
-
-                        //maintainenceRequests.saveChanges(); //Funker ikke av en eller annen grunn
-
-
-                        //dx.bookings.Remove(dx.bookings.Find(selected.ID));
-
-                        //maintainenceRequests.Add.selected();
-                        //maintainenceRequests.; //Funker ikke av en eller annen grunn
-
-                        selected = null;
-                        maintainenceRequests.Load();
-                        roomMaintananceList.DataContext = maintainenceRequests.Local;
-
-                        lblMessages.Content = "Maintanance request deleted";
-                    }
-                    catch
-                    {
-                        lblMessages.Content = "A problem while you where removing a maintanance request";
-                    }
-                }
-            }
+            new ChangeStatus(dx).ShowDialog();
         }
     }
 }
